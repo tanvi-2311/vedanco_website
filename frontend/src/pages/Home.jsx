@@ -154,10 +154,6 @@ const Home = () => {
         <div className="container">
           <div className="section-header-flex reveal">
             <h2 className="section-title">BUSINESSES</h2>
-            <div className="business-tabs">
-              <span className="tab-item active">Verticals</span>
-              <span className="tab-item">Listed Companies</span>
-            </div>
           </div>
 
           <div className="business-layout-grid">

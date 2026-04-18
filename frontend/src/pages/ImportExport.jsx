@@ -36,19 +36,43 @@ const ImportExport = () => {
             <h2 className="section-title-alt">Global Trading &amp; Customs Solutions</h2>
             <div className="verticals-link-grid">
                 
-                <a href="#" className="v-card-link">
+                <Link to="/sea-cargo" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/join1.png" alt="Sea &amp; Air Cargo" />
+                            <img src="/assets/images/join1.png" alt="Sea Cargo" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Sea &amp; Air Cargo</h3>
-                            <p>Global logistics management through major international ports and airports, ensuring timely delivery and safety.</p>
+                            <h3>Sea Cargo</h3>
+                            <p>Global logistics management through major international ports, ensuring timely delivery and safety.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
+                </Link>
+                <Link to="/air-cargo" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/hero.png" alt="Air Cargo" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Air Cargo</h3>
+                            <p>High-speed global delivery solutions for time-critical and high-value cargo across continents.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/global-trading" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/sustainability.png" alt="Global Trading" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Global Trading</h3>
+                            <p>Comprehensive trading solutions including bulk commodity sourcing and end-to-end supply chain integration.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/customs-clearance" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
                             <img src="/assets/images/grid_office.png" alt="Customs Clearance" />
@@ -59,19 +83,7 @@ const ImportExport = () => {
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
-                    <div className="v-card-main-simple">
-                        <div className="v-img-box">
-                            <img src="/assets/images/sustainability.png" alt="Connecting the World" />
-                        </div>
-                        <div className="v-info-box">
-                            <h3>Connecting the World</h3>
-                            <p>We provide comprehensive trading solutions that include bulk commodity sourcing, quality inspection, and end-to-end logistics. Our team leverages advanced tracking technology to monitor cargo in real-time, providing transparency and reliability to our global partners.</p>
-                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>
+                </Link>
             </div>
         </div>
     </section>

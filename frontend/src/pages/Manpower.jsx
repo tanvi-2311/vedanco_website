@@ -36,42 +36,30 @@ const Manpower = () => {
             <h2 className="section-title-alt">Empowering Human Capital</h2>
             <div className="verticals-link-grid">
                 
-                <a href="#" className="v-card-link">
+                <Link to="/manpower-staffing" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/grid_office.png" alt="Technical Staffing" />
+                            <img src="/assets/images/join1.png" alt="Technical Staffing" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Technical Staffing</h3>
-                            <p>Direct placement and outsourcing of highly skilled engineers, technicians, and digital professionals.</p>
+                            <h3>Manpower Staffing</h3>
+                            <p>Direct placement and recruitment of highly skilled engineers, technicians, and digital professionals.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
+                </Link>
+                <Link to="/skill-training" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/sustainability.png" alt="Skill Development" />
+                            <img src="/assets/images/skill-development.png" alt="Skill Training" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Skill Development</h3>
+                            <h3>Skill Training</h3>
                             <p>Continuous training and certification programs to keep our workforce at the top of their field.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
-                    <div className="v-card-main-simple">
-                        <div className="v-img-box">
-                            <img src="/assets/images/join2.png" alt="Strategic Talent Acquisition" />
-                        </div>
-                        <div className="v-info-box">
-                            <h3>Strategic Talent Acquisition</h3>
-                            <p>We leverage our global network to find the right people for the right jobs. From temporary project-based staffing to permanent executive placements, our HR solutions are tailored to meet unique business demands.</p>
-                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>
+                </Link>
             </div>
         </div>
     </section>

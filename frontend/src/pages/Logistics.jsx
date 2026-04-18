@@ -36,42 +36,54 @@ const Logistics = () => {
             <h2 className="section-title-alt">Advanced Supply Chain &amp; Warehousing</h2>
             <div className="verticals-link-grid">
                 
-                <a href="#" className="v-card-link">
+                <Link to="/warehousing" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/hero.png" alt="Smart Warehousing" />
+                            <img src="/assets/images/warehousing_hero.png" alt="Warehousing" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Smart Warehousing</h3>
-                            <p>State-of-the-art storage facilities with real-time inventory management and automation.</p>
+                            <h3>Warehousing</h3>
+                            <p>State-of-the-art storage facilities with real-time inventory management and robotic automation.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
+                </Link>
+                <Link to="/transport" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/join1.png" alt="Distribution Fleet" />
+                            <img src="/assets/images/transport_hero.png" alt="Transport" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Distribution Fleet</h3>
-                            <p>A multi-modal transport network ensuring last-mile delivery across thousands of zip codes.</p>
+                            <h3>Transport</h3>
+                            <p>A multi-modal transport network ensuring efficient point-to-point delivery across global terrain.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
+                </Link>
+                <Link to="/supply-chain" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/grid_office.png" alt="Efficiency in Motion" />
+                            <img src="/assets/images/supply_chain_hero.png" alt="Supply Chain" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Efficiency in Motion</h3>
-                            <p>Our logistics ecosystem is powered by proprietary technology that predicts demand and optimizes routing. From cold storage for agri-products to heavy-lift transport for industrial equipment, we handle it all.</p>
+                            <h3>Supply Chain</h3>
+                            <p>End-to-end orchestration of your logistics network with AI-driven visibility and risk control.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
+                </Link>
+                <Link to="/last-mile-delivery" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/last_mile_delivery_hero.png" alt="Last Mile Delivery" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Last Mile Delivery</h3>
+                            <p>Connecting your brand to the doorstep of the world with hyper-local urban fulfillment.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
             </div>
         </div>
     </section>

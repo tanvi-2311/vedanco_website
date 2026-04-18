@@ -7,7 +7,10 @@ const Footer = () => {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
-            <div className="footer-logo">Vedan<span className="logo-v">CO</span></div>
+            <div className="logo footer-logo-override">
+              <div className="logo-icon-v">V</div>
+              <span className="logo-text">Vedanco</span>
+            </div>
             <p>Building world-class infrastructure and empowering lives through sustainable development.</p>
             <div className="social-icons">
               <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>

@@ -14,6 +14,26 @@ import Recycling from './pages/Recycling';
 import SoftwareSolutions from './pages/SoftwareSolutions';
 import About from './pages/About';
 import Foundation from './pages/Foundation';
+import SeaCargo from './pages/SeaCargo';
+import AirCargo from './pages/AirCargo';
+import GlobalTrading from './pages/GlobalTrading';
+import CustomsClearance from './pages/CustomsClearance';
+import Warehousing from './pages/Warehousing';
+import Transport from './pages/Transport';
+import SupplyChain from './pages/SupplyChain';
+import LastMileDelivery from './pages/LastMileDelivery';
+import AirlinesDetail from './pages/AirlinesDetail';
+import ExecutiveJets from './pages/ExecutiveJets';
+import SmartTerminals from './pages/SmartTerminals';
+import AviationCargoServices from './pages/AviationCargoServices';
+import SoftwareSolutionsDetail from './pages/SoftwareSolutionsDetail';
+import CloudComputing from './pages/CloudComputing';
+import ManpowerStaffing from './pages/ManpowerStaffing';
+import SkillTraining from './pages/SkillTraining';
+import CarbonCredits from './pages/CarbonCredits';
+import SolarEnergyDetail from './pages/SolarEnergyDetail';
+import WindPower from './pages/WindPower';
+import WasteRecyclingDetail from './pages/WasteRecyclingDetail';
 
 import './index.css'; // Global styles
 
@@ -36,6 +56,39 @@ function App() {
         <Route path="/manpower" element={<Manpower />} />
         <Route path="/recycling" element={<Recycling />} />
         <Route path="/software-solutions" element={<SoftwareSolutions />} />
+        
+        {/* Import-Export Details */}
+        <Route path="/sea-cargo" element={<SeaCargo />} />
+        <Route path="/air-cargo" element={<AirCargo />} />
+        <Route path="/global-trading" element={<GlobalTrading />} />
+        <Route path="/customs-clearance" element={<CustomsClearance />} />
+
+        {/* Logistics Details */}
+        <Route path="/warehousing" element={<Warehousing />} />
+        <Route path="/transport" element={<Transport />} />
+        <Route path="/supply-chain" element={<SupplyChain />} />
+        <Route path="/last-mile-delivery" element={<LastMileDelivery />} />
+
+        {/* Aviation Details */}
+        <Route path="/airlines" element={<AirlinesDetail />} />
+        <Route path="/executive-jets" element={<ExecutiveJets />} />
+        <Route path="/smart-terminals" element={<SmartTerminals />} />
+        <Route path="/aviation-cargo" element={<AviationCargoServices />} />
+
+        {/* Digital & Manpower Details */}
+        <Route path="/software-solutions-detail" element={<SoftwareSolutionsDetail />} />
+        <Route path="/cloud-computing" element={<CloudComputing />} />
+        <Route path="/manpower-staffing" element={<ManpowerStaffing />} />
+        <Route path="/skill-training" element={<SkillTraining />} />
+
+        {/* Sustainability Details */}
+        <Route path="/carbon-credits" element={<CarbonCredits />} />
+        <Route path="/solar-energy" element={<SolarEnergyDetail />} />
+        <Route path="/wind-power" element={<WindPower />} />
+        <Route path="/waste-recycling" element={<WasteRecyclingDetail />} />
+
+
+
 
         {/* .html Redirects for backward compatibility */}
         <Route path="/index.html" element={<Navigate to="/" replace />} />

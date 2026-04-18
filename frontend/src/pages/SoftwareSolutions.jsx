@@ -36,22 +36,22 @@ const SoftwareSolutions = () => {
             <h2 className="section-title-alt">Digital Transformation &amp; Engineering</h2>
             <div className="verticals-link-grid">
                 
-                <a href="#" className="v-card-link">
+                <Link to="/software-solutions-detail" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/airport.png" alt="AI &amp; Automation" />
+                            <img src="/assets/images/join2.png" alt="Software Solutions" />
                         </div>
                         <div className="v-info-box">
-                            <h3>AI &amp; Automation</h3>
+                            <h3>Software Solutions</h3>
                             <p>Integrating artificial intelligence into business workflows to drive unprecedented efficiency and data insights.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
+                </Link>
+                <Link to="/cloud-computing" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/grid_solar.png" alt="Cloud Infrastructure" />
+                            <img src="/assets/images/grid_office.png" alt="Cloud Infrastructure" />
                         </div>
                         <div className="v-info-box">
                             <h3>Cloud Infrastructure</h3>
@@ -59,7 +59,7 @@ const SoftwareSolutions = () => {
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
         </div>
     </section>

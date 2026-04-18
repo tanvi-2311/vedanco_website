@@ -36,30 +36,42 @@ const Energy = () => {
             <h2 className="section-title-alt">Renewable Future &amp; Net-Zero Credits</h2>
             <div className="verticals-link-grid">
                 
-                <a href="#" className="v-card-link">
+                <Link to="/carbon-credits" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/pill_logistics.png" alt="Solar &amp; Wind" />
+                            <img src="/assets/images/sustainability.png" alt="Carbon Credits" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Solar &amp; Wind</h3>
-                            <p>Developing hundreds of megawatts of clean energy projects to power the national grid sustainably.</p>
+                            <h3>Carbon Credits</h3>
+                            <p>Managing global carbon credit portfolios to help international organizations achieve net-zero targets.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
+                </Link>
+                <Link to="/solar-energy" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/hero.png" alt="Carbon Assets" />
+                            <img src="/assets/images/grid_solar.png" alt="Solar Energy" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Carbon Assets</h3>
-                            <p>Managing global carbon credit portfolios to help international organizations achieve their net-zero targets.</p>
+                            <h3>Solar Energy</h3>
+                            <p>Developing hundreds of megawatts of ultra-efficient solar projects to power the national grid.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
+                </Link>
+                <Link to="/wind-power" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/pill_energy.png" alt="Wind Power" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Wind Power</h3>
+                            <p>Harnessing consistent high-velocity atmospheric currents with next-gen onshore and offshore turbines.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
             </div>
         </div>
     </section>
