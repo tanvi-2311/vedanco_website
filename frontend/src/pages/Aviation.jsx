@@ -90,12 +90,6 @@ const Aviation = () => {
 
     <section className="cta-section">
         <div className="container">
-<<<<<<< HEAD
-            <div className="cta-box reveal">
-                <h3>Ready to take off?</h3>
-                <p>Experience world-class aviation infrastructure with Vedanco.</p>
-                <a href="#" className="btn-profile">Partner With Us</a>
-=======
             <h2 className="section-title-alt">Advanced Aviation Infrastructure</h2>
             <div className="verticals-link-grid">
                 
@@ -147,7 +141,6 @@ const Aviation = () => {
                         </div>
                     </div>
                 </Link>
->>>>>>> c8256d2b3642aff57e40aaa00538627918ec6910
             </div>
         </div>
     </section>

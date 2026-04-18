@@ -97,12 +97,6 @@ const Logistics = () => {
 
     <section className="cta-section">
         <div className="container">
-<<<<<<< HEAD
-            <div className="cta-box reveal">
-                <h3>Looking for logistics partner?</h3>
-                <p>Optimize your supply chain with Vedanco's world-class facilities.</p>
-                <a href="#" className="btn-profile">Get a Quote</a>
-=======
             <h2 className="section-title-alt">Advanced Supply Chain &amp; Warehousing</h2>
             <div className="verticals-link-grid">
                 
@@ -154,7 +148,6 @@ const Logistics = () => {
                         </div>
                     </div>
                 </Link>
->>>>>>> c8256d2b3642aff57e40aaa00538627918ec6910
             </div>
         </div>
     </section>

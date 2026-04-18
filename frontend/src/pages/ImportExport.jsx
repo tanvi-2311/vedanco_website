@@ -97,12 +97,6 @@ const ImportExport = () => {
 
     <section className="cta-section">
         <div className="container">
-<<<<<<< HEAD
-            <div className="cta-box reveal">
-                <h3>Ready to expand your global trade?</h3>
-                <p>Connect with our experts to streamline your international supply chain.</p>
-                <a href="#" className="btn-profile">Contact Us</a>
-=======
             <h2 className="section-title-alt">Global Trading &amp; Customs Solutions</h2>
             <div className="verticals-link-grid">
                 
@@ -154,7 +148,6 @@ const ImportExport = () => {
                         </div>
                     </div>
                 </Link>
->>>>>>> c8256d2b3642aff57e40aaa00538627918ec6910
             </div>
         </div>
     </section>
