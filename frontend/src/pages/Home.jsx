@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  
+
 
   return (
     <main>
@@ -62,7 +62,7 @@ const Home = () => {
               <span className="tab-item">Listed Companies</span>
             </div>
           </div>
-          
+
           <div className="business-layout-grid">
             <div className="small-grid-8">
               <Link to="/import-export" className="biz-tile active-gradient" data-feature-img="assets/images/hero.png" data-subnav="Shipping,Cargo,Global Hub,Customs">
@@ -100,7 +100,7 @@ const Home = () => {
                 <div className="biz-label">Energy & Carbon Credit</div>
               </Link>
             </div>
-            
+
             <div className="featured-biz-area">
               <div className="main-feature-img">
                 <img src="/assets/images/airport.png" alt="Aviation Hub" />

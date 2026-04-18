@@ -12,6 +12,8 @@ import Logistics from './pages/Logistics';
 import Manpower from './pages/Manpower';
 import Recycling from './pages/Recycling';
 import SoftwareSolutions from './pages/SoftwareSolutions';
+import About from './pages/About';
+import Foundation from './pages/Foundation';
 
 import './index.css'; // Global styles
 
@@ -21,6 +23,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/foundation" element={<Foundation />} />
         
         {/* Clean Routes */}
         <Route path="/aviation" element={<Aviation />} />
@@ -35,6 +39,8 @@ function App() {
 
         {/* .html Redirects for backward compatibility */}
         <Route path="/index.html" element={<Navigate to="/" replace />} />
+        <Route path="/about.html" element={<Navigate to="/about" replace />} />
+        <Route path="/foundation.html" element={<Navigate to="/foundation" replace />} />
         <Route path="/aviation.html" element={<Navigate to="/aviation" replace />} />
         <Route path="/businesses.html" element={<Navigate to="/businesses" replace />} />
         <Route path="/energy.html" element={<Navigate to="/energy" replace />} />
