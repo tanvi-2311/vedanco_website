@@ -1,8 +1,98 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const [isExpanded, setIsExpanded] = useState(true); // Default to expanded for now as in the user's view
+  const [isProfileExpanded, setIsProfileExpanded] = useState(false);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+    revealElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   
+  const businesses = [
+    {
+      id: 'import-export',
+      title: 'Import–Export',
+      path: '/import-export',
+      featureImg: '/assets/images/hero.png',
+      tileImg: '/assets/images/hero.png',
+      subnav: ['Shipping', 'Cargo', 'Global Hub', 'Customs']
+    },
+    {
+      id: 'logistics',
+      title: 'Logistics',
+      path: '/logistics',
+      featureImg: '/assets/images/pill_logistics.png',
+      tileImg: '/assets/images/hero.png',
+      subnav: ['Warehousing', 'Transport', 'Last Mile', 'Supply Chain']
+    },
+    {
+      id: 'manpower',
+      title: 'Manpower',
+      path: '/manpower',
+      featureImg: '/assets/images/join1.png',
+      tileImg: '/assets/images/join1.png',
+      subnav: ['Staffing', 'Training', 'Recruitment', 'HR Outsourcing']
+    },
+    {
+      id: 'interior-design',
+      title: 'Interior Design',
+      path: '/interior-design',
+      featureImg: '/assets/images/grid_office.png',
+      tileImg: '/assets/images/grid_office.png',
+      subnav: ['Workspace', 'Residential', 'Premium', 'Consulting']
+    },
+    {
+      id: 'recycling',
+      title: 'Recycling',
+      path: '/recycling',
+      featureImg: '/assets/images/sustainability.png',
+      tileImg: '/assets/images/sustainability.png',
+      subnav: ['Waste to Energy', 'E-Waste', 'Paper', 'Sustainable Dev']
+    },
+    {
+      id: 'software-solutions',
+      title: 'Software Solutions',
+      path: '/software-solutions',
+      featureImg: '/assets/images/join2.png',
+      tileImg: '/assets/images/join2.png',
+      subnav: ['Custom Dev', 'Cloud', 'Cybersecurity', 'AI Automation']
+    },
+    {
+      id: 'aviation',
+      title: 'Aviation',
+      path: '/aviation',
+      featureImg: '/assets/images/airport.png',
+      tileImg: '/assets/images/airport.png',
+      subnav: ['Airlines', 'Executive Jets', 'Cargo Services', 'Smart Terminals']
+    },
+    {
+      id: 'energy',
+      title: 'Energy & Carbon Credit',
+      path: '/energy',
+      featureImg: '/assets/images/grid_solar.png',
+      tileImg: '/assets/images/grid_solar.png',
+      subnav: ['Carbon Credit', 'Solar', 'Wind', 'Green Hydrogen']
+    }
+  ];
+
+  const [activeBiz, setActiveBiz] = useState(businesses[0]);
 
   return (
     <main>
@@ -35,18 +125,24 @@ const Home = () => {
       {/* About Section Full-Width */}
       <section className="about-section" id="about">
         <div className="about-grid-full">
-          <div className="chairman-container">
+          <div className="chairman-container reveal">
             <img src="/assets/images/chairman.png" alt="Chairman Portrait" className="chairman-img" />
           </div>
           <div className="about-text">
-            <div className="text-content-wrapper">
+            <div className="text-content-wrapper reveal">
               <h2>Leading with Vision, <br />Impacting Lives.</h2>
-              <div className="profile-text-collapsed" id="profile-text">
+              <div className={`profile-text-collapsed ${isProfileExpanded ? 'profile-text-expanded' : ''}`} id="profile-text">
                 <p className="quote">"Building infrastructure is building the future. We believe that world-class facilities are the backbone of a thriving nation."</p>
                 <p>At Vedanco Group, our commitment to excellence has propelled us to the forefront of global logistics, energy, and resources. We don't just build ports and airports; we build gateways to the future.</p>
                 <p>Through our integrated business model, we ensure that every facet of our operations contributes to the broader goal of nation-building. Sustainability is at the core of everything we do, ensuring that our growth today does not compromise the environment of tomorrow.</p>
               </div>
-              <button className="btn-profile" id="view-profile-btn">View Profile</button>
+              <button 
+                className="btn-profile" 
+                id="view-profile-btn"
+                onClick={() => setIsProfileExpanded(!isProfileExpanded)}
+              >
+                {isProfileExpanded ? 'Hide Profile' : 'View Profile'}
+              </button>
             </div>
           </div>
         </div>
@@ -55,7 +151,7 @@ const Home = () => {
       {/* Businesses Section */}
       <section className="grid-feature-section" id="businesses">
         <div className="container">
-          <div className="section-header-flex">
+          <div className="section-header-flex reveal">
             <h2 className="section-title">BUSINESSES</h2>
             <div className="business-tabs">
               <span className="tab-item active">Verticals</span>
@@ -65,54 +161,39 @@ const Home = () => {
           
           <div className="business-layout-grid">
             <div className="small-grid-8">
-              <Link to="/import-export" className="biz-tile active-gradient" data-feature-img="assets/images/hero.png" data-subnav="Shipping,Cargo,Global Hub,Customs">
-                <div className="biz-info">
-                  <span>Import–Export</span>
-                  <i className="fas fa-arrow-right"></i>
+              {businesses.map((biz) => (
+                <div 
+                  key={biz.id}
+                  className={`biz-tile ${activeBiz.id === biz.id ? 'active-gradient' : ''}`}
+                  onMouseEnter={() => setActiveBiz(biz)}
+                  onClick={() => window.location.href = biz.path}
+                >
+                  {activeBiz.id === biz.id ? (
+                    <div className="biz-info">
+                      <span>{biz.title}</span>
+                      <i className="fas fa-arrow-right"></i>
+                    </div>
+                  ) : (
+                    <>
+                      <img src={biz.tileImg} alt={biz.title} />
+                      <div className="biz-label">{biz.title}</div>
+                    </>
+                  )}
                 </div>
-              </Link>
-              <Link to="/logistics" className="biz-tile" data-feature-img="assets/images/pill_logistics.png" data-subnav="Warehousing,Transport,Last Mile,Supply Chain">
-                <img src="/assets/images/hero.png" alt="Logistics" />
-                <div className="biz-label">Logistics</div>
-              </Link>
-              <Link to="/manpower" className="biz-tile" data-feature-img="assets/images/join1.png" data-subnav="Staffing,Training,Recruitment,HR Outsourcing">
-                <img src="/assets/images/join1.png" alt="Manpower" />
-                <div className="biz-label">Manpower</div>
-              </Link>
-              <Link to="/interior-design" className="biz-tile" data-feature-img="assets/images/grid_office.png" data-subnav="Workspace,Residential,Premium,Consulting">
-                <img src="/assets/images/grid_office.png" alt="Interior Design" />
-                <div className="biz-label">Interior Design</div>
-              </Link>
-              <Link to="/recycling" className="biz-tile" data-feature-img="assets/images/sustainability.png" data-subnav="Waste to Energy,E-Waste,Paper,Sustainable Dev">
-                <img src="/assets/images/sustainability.png" alt="Recycling" />
-                <div className="biz-label">Recycling</div>
-              </Link>
-              <Link to="/software-solutions" className="biz-tile" data-feature-img="assets/images/join2.png" data-subnav="Custom Dev,Cloud,Cybersecurity,AI Automation">
-                <img src="/assets/images/join2.png" alt="Software Solutions" />
-                <div className="biz-label">Software Solutions</div>
-              </Link>
-              <Link to="/aviation" className="biz-tile" data-feature-img="assets/images/airport.png" data-subnav="Airlines,Executive Jets,Cargo Services,Smart Terminals">
-                <img src="/assets/images/airport.png" alt="Aviation" />
-                <div className="biz-label">Aviation</div>
-              </Link>
-              <Link to="/energy" className="biz-tile" data-feature-img="assets/images/grid_solar.png" data-subnav="Carbon Credit,Solar,Wind,Green Hydrogen">
-                <img src="/assets/images/grid_solar.png" alt="Energy" />
-                <div className="biz-label">Energy & Carbon Credit</div>
-              </Link>
+              ))}
             </div>
             
             <div className="featured-biz-area">
               <div className="main-feature-img">
-                <img src="/assets/images/airport.png" alt="Aviation Hub" />
+                <img src={activeBiz.featureImg} alt={activeBiz.title} />
                 <div className="feature-overlay-nav">
                   <ul className="feature-subnav">
-                    <li className="active">Airlines</li>
-                    <li>Executive Jets</li>
-                    <li>Cargo Services</li>
-                    <li>Smart Terminals</li>
+                    {activeBiz.subnav.map((item, idx) => (
+                      <li key={idx} className={idx === 0 ? 'active' : ''}>{item}</li>
+                    ))}
                   </ul>
                   <div className="explore-line"></div>
-                  <a href="#" className="explore-link">Explore More</a>
+                  <Link to={activeBiz.path} className="explore-link">Explore More</Link>
                 </div>
               </div>
             </div>
@@ -121,7 +202,7 @@ const Home = () => {
       </section>
 
       {/* Sustainability Banner */}
-      <section className="sustainability-banner" id="sustainability">
+      <section className="sustainability-banner reveal" id="sustainability">
         <div className="sustainability-content">
           <h3>FOR A SUSTAINABLE TOMORROW</h3>
           <p>100 MILLION TREES PLEDGE</p>
@@ -129,13 +210,13 @@ const Home = () => {
       </section>
 
       {/* Latest News */}
-      <section className="news-section">
+      <section className="news-section" id="news">
         <div className="container">
-          <div className="news-header">
+          <div className="news-header reveal">
             <h2>Latest News</h2>
             <a href="#" className="view-all">View All &nbsp; <i className="fas fa-arrow-right"></i></a>
           </div>
-          <div className="news-cards">
+          <div className="news-cards reveal-stagger">
             <div className="news-card">
               <div className="news-thumb"><img src="/assets/images/news1.png" alt="News 1" /></div>
               <div className="news-body">
@@ -164,14 +245,14 @@ const Home = () => {
       {/* Join Us Section */}
       <section className="join-section" id="careers">
         <div className="container">
-          <div className="join-header-flex">
+          <div className="join-header-flex reveal">
             <div className="join-titles">
               <h2>JOIN US</h2>
               <p>We foster a culture where people with a can-do attitude can be a part of our growing team across Vedanco businesses.</p>
             </div>
             <a href="#" className="btn-know-more-dark">Know More</a>
           </div>
-          <div className="join-cards-layout">
+          <div className="join-cards-layout reveal-stagger">
             <div className="join-card-wide">
               <img src="/assets/images/join1.png" alt="Job Opportunities" />
               <div className="join-card-content">
@@ -203,14 +284,22 @@ const Home = () => {
       <section className="security-alert">
         <div className="container">
           <div className="security-content">
-            <h3>SECURITY ALERT – Beware of Fraudulent Communications</h3>
-            <ul>
-              <li>It has been brought to our notice that certain unscrupulous individuals/agencies are misleading the public by issuing fake job offers.</li>
-              <li>Vedanco Group and its subsidiary companies do not charge any fee/money for recruitment.</li>
-              <li>Please verify any communication from unauthorized domains or agents claiming to represent us.</li>
-              <li>Our official website is the only source of truth for careers and business opportunities.</li>
-            </ul>
-            <a href="#" className="read-less">Read Less</a>
+            <h3>SECURITY ALERT - Beware of Fraudulent Communications</h3>
+            <div className={`security-expandable-content ${isExpanded ? 'active' : ''}`}>
+              <p>It has come to our attention that certain unauthorised individuals and entities are falsely claiming to represent the Vedanco Group and attempting to solicit money from members of the public under the pretext of vendor registration, recruitment, job offers, interviews, training programmes or other business opportunities.</p>
+              <p>The Vedanco Group and its entities do not charge any fees or request any payment for:</p>
+              <ul>
+                <li>Vendor or supplier registration or onboarding</li>
+                <li>Job applications, recruitment processes or employment offers</li>
+                <li>Interviews, training programmes or onboarding formalities</li>
+                <li>Any request for money in connection with the above should be treated as fraudulent.</li>
+              </ul>
+              <p>We strongly advise individuals and businesses to exercise caution and verify all communications exclusively through official Vedanco Group channels and domain-based email addresses.</p>
+              <p>The Vedanco Group and its entities disclaim any liability for loss, damage, financial harm, data compromise or claims arising from dealings with unauthorised persons or fraudulent communications.</p>
+            </div>
+            <a href="javascript:void(0)" className="read-less" onClick={() => setIsExpanded(!isExpanded)}>
+              {isExpanded ? 'Read Less' : 'Read More'}
+            </a>
           </div>
         </div>
       </section>

@@ -1,9 +1,29 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import React from 'react';
 import '../index.css';
 
 const Businesses = () => {
-    
+    const [isExpanded, setIsExpanded] = useState(true);
+
+    useEffect(() => {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+        revealElements.forEach(el => observer.observe(el));
+
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <main>
@@ -19,7 +39,7 @@ const Businesses = () => {
     </section>
             <div className="content-over-banner">
 
-<section className="business-intro">
+<section className="business-intro reveal">
         <div className="container">
             <div className="intro-content-left">
                 <p className="intro-p">
@@ -29,10 +49,10 @@ const Businesses = () => {
             </div>
         </div>
     </section>
-<section className="verticals-expand-section">
+<section className="verticals-expand-section reveal">
         <div className="container">
             <h2 className="section-title-alt">Business Verticals</h2>
-            <div className="verticals-link-grid">
+            <div className="verticals-link-grid reveal-stagger">
                 
                 {/* Vertical 1: Import-Export */}
                 <Link to="/import-export" className="v-card-link">
@@ -149,7 +169,7 @@ const Businesses = () => {
             </div>
         </div>
     </section>
-<section className="investors-preview-full">
+<section className="investors-preview-full reveal">
         <div className="container">
             <div className="investor-header">
                 <h2>Investor Relations</h2>
@@ -173,8 +193,29 @@ const Businesses = () => {
             </div>
         </div>
     </section>
-
-                    </div>
+      <section className="security-alert">
+        <div className="container">
+          <div className="security-content">
+            <h3>SECURITY ALERT - Beware of Fraudulent Communications</h3>
+            <div className={`security-expandable-content ${isExpanded ? 'active' : ''}`}>
+              <p>It has come to our attention that certain unauthorised individuals and entities are falsely claiming to represent the Vedanco Group and attempting to solicit money from members of the public under the pretext of vendor registration, recruitment, job offers, interviews, training programmes or other business opportunities.</p>
+              <p>The Vedanco Group and its entities do not charge any fees or request any payment for:</p>
+              <ul>
+                <li>Vendor or supplier registration or onboarding</li>
+                <li>Job applications, recruitment processes or employment offers</li>
+                <li>Interviews, training programmes or onboarding formalities</li>
+                <li>Any request for money in connection with the above should be treated as fraudulent.</li>
+              </ul>
+              <p>We strongly advise individuals and businesses to exercise caution and verify all communications exclusively through official Vedanco Group channels and domain-based email addresses.</p>
+              <p>The Vedanco Group and its entities disclaim any liability for loss, damage, financial harm, data compromise or claims arising from dealings with unauthorised persons or fraudulent communications.</p>
+            </div>
+            <a href="javascript:void(0)" className="read-less" onClick={() => setIsExpanded(!isExpanded)}>
+              {isExpanded ? 'Read Less' : 'Read More'}
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
 </main>
     );
 };
