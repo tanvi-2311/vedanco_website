@@ -69,9 +69,11 @@ const Header = () => {
                     </div>
                   </div>
                 </li>
-                <li><a href="#sustainability">Sustainability</a></li>
+                <li><Link to="/sustainability">Sustainability</Link></li>
                 <li><Link to="/foundation">Vedanco Foundation</Link></li>
-                <li><a href="#investors">Investors</a></li>
+                <li><Link to="/investors">Investors</Link></li>
+                <li><Link to="/services">Services</Link></li>
+                <li><Link to="/contact">Contact Us</Link></li>
               </ul>
             </nav>
           </div>

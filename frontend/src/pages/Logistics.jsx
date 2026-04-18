@@ -1,9 +1,40 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import React from 'react';
 import '../index.css';
 
 const Logistics = () => {
-    
+    const subServices = [
+        {
+            id: 'warehousing',
+            title: 'Warehousing',
+            desc: 'Our smart warehousing solutions utilize AI and robotics to manage inventory with precision. With over 5 million sq. ft. of storage across India, we provide scalable space for every business type.',
+            img: '/assets/images/hero.png',
+            stats: ['5M+ Sq.Ft. Space', '24/7 Security', 'Real-time Inventory']
+        },
+        {
+            id: 'transport',
+            title: 'Transport',
+            desc: 'We operate a vast multi-modal transport network including rail, road, and coastal shipping. Our fleet is equipped with GPS tracking and telematics for total route visibility.',
+            img: '/assets/images/join1.png',
+            stats: ['500+ Heavy Vehicles', 'Green Logistics', 'GPS Tracked Fleet']
+        },
+        {
+            id: 'supply-chain',
+            title: 'Supply Chain',
+            desc: 'Vedanco offers end-to-end supply chain consulting and management. We help businesses optimize their processes from raw material sourcing to final customer delivery.',
+            img: '/assets/images/grid_office.png',
+            stats: ['Custom Solutions', 'Cost Optimization', 'Demand Forecasting']
+        },
+        {
+            id: 'last-mile',
+            title: 'Last Mile Delivery',
+            desc: 'Our last-mile delivery experts ensure that your products reach the end consumer quickly and safely, even in the most remote areas, using a hub-and-spoke distribution model.',
+            img: '/assets/images/pill_logistics.png',
+            stats: ['15,000+ Pin Codes', 'Express Delivery', 'OTP Verification']
+        }
+    ];
+
+    const [activeService, setActiveService] = useState(subServices[0]);
 
     return (
         <main>
@@ -20,58 +51,56 @@ const Logistics = () => {
             <div className="content-over-banner">
 
 
-    <section className="business-intro">
+    <section className="detail-content-section">
         <div className="container">
-            <div className="intro-content-left">
-                <p className="intro-p">
-                    Vedanco Logistics provides end-to-end solutions that optimize the flow of goods, reducing costs and increasing speed-to-market for our clients.
-                </p>
-                <a href="#" className="read-more-btn">Read More</a>
+            <div className="detail-grid">
+                <div className="detail-main-text">
+                    <h2 className="reveal">Excellence in {activeService.title}</h2>
+                    <p className="summary-p reveal">{activeService.desc}</p>
+                    
+                    <div className="service-highlights reveal-stagger">
+                        {activeService.stats.map((stat, idx) => (
+                            <div key={idx} className="highlight-item">
+                                <i className="fas fa-shipping-fast"></i>
+                                <h4>{stat}</h4>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="vertical-selector-list reveal">
+                        <h3>Service Verticals</h3>
+                        <ul>
+                            {subServices.map((service) => (
+                                <li 
+                                    key={service.id} 
+                                    className={activeService.id === service.id ? 'active' : ''}
+                                    onClick={() => setActiveService(service)}
+                                >
+                                    {service.title} <i className="fas fa-arrow-right"></i>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="detail-side-media reveal">
+                    <div className="round-card-wrapper">
+                        <img src={activeService.img} alt={activeService.title} className="round-card" />
+                        <div className="info-pill">
+                            <strong>Seamless</strong> Flow
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section className="verticals-expand-section">
+    <section className="cta-section">
         <div className="container">
-            <h2 className="section-title-alt">Advanced Supply Chain &amp; Warehousing</h2>
-            <div className="verticals-link-grid">
-                
-                <a href="#" className="v-card-link">
-                    <div className="v-card-main-simple">
-                        <div className="v-img-box">
-                            <img src="/assets/images/hero.png" alt="Smart Warehousing" />
-                        </div>
-                        <div className="v-info-box">
-                            <h3>Smart Warehousing</h3>
-                            <p>State-of-the-art storage facilities with real-time inventory management and automation.</p>
-                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" className="v-card-link">
-                    <div className="v-card-main-simple">
-                        <div className="v-img-box">
-                            <img src="/assets/images/join1.png" alt="Distribution Fleet" />
-                        </div>
-                        <div className="v-info-box">
-                            <h3>Distribution Fleet</h3>
-                            <p>A multi-modal transport network ensuring last-mile delivery across thousands of zip codes.</p>
-                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" className="v-card-link">
-                    <div className="v-card-main-simple">
-                        <div className="v-img-box">
-                            <img src="/assets/images/grid_office.png" alt="Efficiency in Motion" />
-                        </div>
-                        <div className="v-info-box">
-                            <h3>Efficiency in Motion</h3>
-                            <p>Our logistics ecosystem is powered by proprietary technology that predicts demand and optimizes routing. From cold storage for agri-products to heavy-lift transport for industrial equipment, we handle it all.</p>
-                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>
+            <div className="cta-box reveal">
+                <h3>Looking for logistics partner?</h3>
+                <p>Optimize your supply chain with Vedanco's world-class facilities.</p>
+                <a href="#" className="btn-profile">Get a Quote</a>
             </div>
         </div>
     </section>

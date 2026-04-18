@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -14,12 +14,57 @@ import Recycling from './pages/Recycling';
 import SoftwareSolutions from './pages/SoftwareSolutions';
 import About from './pages/About';
 import Foundation from './pages/Foundation';
+import Sustainability from './pages/Sustainability';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import Investors from './pages/Investors';
 
 import './index.css'; // Global styles
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 function App() {
+  useEffect(() => {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    const observeElements = () => {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+        revealElements.forEach(el => observer.observe(el));
+    };
+
+    // Initial observation
+    observeElements();
+
+    // Re-observe when DOM changes (for dynamic content)
+    const mutationObserver = new MutationObserver(observeElements);
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+        observer.disconnect();
+        mutationObserver.disconnect();
+    };
+  }, []);
+
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -36,6 +81,10 @@ function App() {
         <Route path="/manpower" element={<Manpower />} />
         <Route path="/recycling" element={<Recycling />} />
         <Route path="/software-solutions" element={<SoftwareSolutions />} />
+        <Route path="/sustainability" element={<Sustainability />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/investors" element={<Investors />} />
 
         {/* .html Redirects for backward compatibility */}
         <Route path="/index.html" element={<Navigate to="/" replace />} />
@@ -50,6 +99,10 @@ function App() {
         <Route path="/manpower.html" element={<Navigate to="/manpower" replace />} />
         <Route path="/recycling.html" element={<Navigate to="/recycling" replace />} />
         <Route path="/software-solutions.html" element={<Navigate to="/software-solutions" replace />} />
+        <Route path="/sustainability.html" element={<Navigate to="/sustainability" replace />} />
+        <Route path="/services.html" element={<Navigate to="/services" replace />} />
+        <Route path="/contact.html" element={<Navigate to="/contact" replace />} />
+        <Route path="/investors.html" element={<Navigate to="/investors" replace />} />
         
         {/* Catch-all to Home */}
         <Route path="*" element={<Home />} />

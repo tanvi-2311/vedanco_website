@@ -6,6 +6,23 @@ const Home = () => {
   const [isExpanded, setIsExpanded] = useState(true); // Default to expanded for now as in the user's view
   const [isProfileExpanded, setIsProfileExpanded] = useState(false);
 
+  const heroSlides = [
+    { bg: '/assets/images/hero_office.png', title: 'Building Infrastructure for a New Era.', pill: '/assets/images/pill_port.png', label: 'Ports' },
+    { bg: '/assets/images/pill_logistics.png', title: 'Global Logistics Redefined.', pill: '/assets/images/pill_logistics.png', label: 'Logistics' },
+    { bg: '/assets/images/airport.png', title: 'Future-Ready Aviation Hubs.', pill: '/assets/images/airport.png', label: 'Airports' },
+    { bg: '/assets/images/grid_solar.png', title: 'Efficient Sustainable Energy Solutions.', pill: '/assets/images/pill_logistics.png', label: 'Energy' },
+    { bg: '/assets/images/join1.png', title: 'Empowering Growth Across Sectors.', pill: '/assets/images/join1.png', label: 'People' }
+  ];
+
+  const [activeHero, setActiveHero] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveHero((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.15,
@@ -98,27 +115,41 @@ const Home = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" style={{ backgroundImage: `url(${heroSlides[activeHero].bg})` }}>
         <div className="container">
           <div className="hero-content">
-            <h1>Building Infrastructure for a New Era.</h1>
+            <h1>{heroSlides[activeHero].title}</h1>
             <a href="#" className="btn-know-more">Know More</a>
           </div>
         </div>
         <div className="hero-slider-wrapper">
           <div className="hero-slider">
-            <div className="slide-pill active" data-bg="assets/images/hero.png"><img src="/assets/images/pill_port.png" alt="Ports" /></div>
-            <div className="slide-pill" data-bg="assets/images/pill_logistics.png"><img src="/assets/images/pill_logistics.png" alt="Logistics" /></div>
-            <div className="slide-pill" data-bg="assets/images/airport.png"><img src="/assets/images/airport.png" alt="Airports" /></div>
-            <div className="slide-pill" data-bg="assets/images/grid_solar.png"><img src="/assets/images/grid_solar.png" alt="Energy" /></div>
-            <div className="slide-pill" data-bg="assets/images/join1.png"><img src="/assets/images/join1.png" alt="People" /></div>
-            <div className="slide-pill" data-bg="assets/images/grid_city.png"><img src="/assets/images/grid_city.png" alt="Infrastructure" /></div>
-            <div className="slide-pill" data-bg="assets/images/grid_stadium.png"><img src="/assets/images/grid_stadium.png" alt="Social" /></div>
+            {heroSlides.map((slide, index) => (
+              <div 
+                key={index} 
+                className={`slide-pill ${activeHero === index ? 'active' : ''}`}
+                onClick={() => setActiveHero(index)}
+              >
+                <img src={slide.pill} alt={slide.label} />
+              </div>
+            ))}
           </div>
           <div className="slider-controls">
-            <button className="slider-prev"><i className="fas fa-chevron-left"></i></button>
-            <div className="slider-dots"></div>
-            <button className="slider-next"><i className="fas fa-chevron-right"></i></button>
+            <button className="slider-prev" onClick={() => setActiveHero((activeHero - 1 + heroSlides.length) % heroSlides.length)}>
+              <i className="fas fa-chevron-left"></i>
+            </button>
+            <div className="slider-dots">
+              {heroSlides.map((_, index) => (
+                <div 
+                  key={index} 
+                  className={`dot ${activeHero === index ? 'active' : ''}`}
+                  onClick={() => setActiveHero(index)}
+                ></div>
+              ))}
+            </div>
+            <button className="slider-next" onClick={() => setActiveHero((activeHero + 1) % heroSlides.length)}>
+              <i className="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
       </section>
