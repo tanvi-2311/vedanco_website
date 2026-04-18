@@ -97,10 +97,64 @@ const Logistics = () => {
 
     <section className="cta-section">
         <div className="container">
+<<<<<<< HEAD
             <div className="cta-box reveal">
                 <h3>Looking for logistics partner?</h3>
                 <p>Optimize your supply chain with Vedanco's world-class facilities.</p>
                 <a href="#" className="btn-profile">Get a Quote</a>
+=======
+            <h2 className="section-title-alt">Advanced Supply Chain &amp; Warehousing</h2>
+            <div className="verticals-link-grid">
+                
+                <Link to="/warehousing" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/warehousing_hero.png" alt="Warehousing" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Warehousing</h3>
+                            <p>State-of-the-art storage facilities with real-time inventory management and robotic automation.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/transport" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/transport_hero.png" alt="Transport" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Transport</h3>
+                            <p>A multi-modal transport network ensuring efficient point-to-point delivery across global terrain.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/supply-chain" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/supply_chain_hero.png" alt="Supply Chain" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Supply Chain</h3>
+                            <p>End-to-end orchestration of your logistics network with AI-driven visibility and risk control.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/last-mile-delivery" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/last_mile_delivery_hero.png" alt="Last Mile Delivery" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Last Mile Delivery</h3>
+                            <p>Connecting your brand to the doorstep of the world with hyper-local urban fulfillment.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+>>>>>>> c8256d2b3642aff57e40aaa00538627918ec6910
             </div>
         </div>
     </section>

@@ -97,10 +97,64 @@ const ImportExport = () => {
 
     <section className="cta-section">
         <div className="container">
+<<<<<<< HEAD
             <div className="cta-box reveal">
                 <h3>Ready to expand your global trade?</h3>
                 <p>Connect with our experts to streamline your international supply chain.</p>
                 <a href="#" className="btn-profile">Contact Us</a>
+=======
+            <h2 className="section-title-alt">Global Trading &amp; Customs Solutions</h2>
+            <div className="verticals-link-grid">
+                
+                <Link to="/sea-cargo" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/join1.png" alt="Sea Cargo" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Sea Cargo</h3>
+                            <p>Global logistics management through major international ports, ensuring timely delivery and safety.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/air-cargo" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/hero.png" alt="Air Cargo" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Air Cargo</h3>
+                            <p>High-speed global delivery solutions for time-critical and high-value cargo across continents.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/global-trading" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/sustainability.png" alt="Global Trading" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Global Trading</h3>
+                            <p>Comprehensive trading solutions including bulk commodity sourcing and end-to-end supply chain integration.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/customs-clearance" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/grid_office.png" alt="Customs Clearance" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Customs Clearance</h3>
+                            <p>Expert handling of complex documentation and regulatory requirements across multiple jurisdictions.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+>>>>>>> c8256d2b3642aff57e40aaa00538627918ec6910
             </div>
         </div>
     </section>

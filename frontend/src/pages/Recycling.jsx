@@ -36,30 +36,18 @@ const Recycling = () => {
             <h2 className="section-title-alt">Circular Economy &amp; Sustainability</h2>
             <div className="verticals-link-grid">
                 
-                <a href="#" className="v-card-link">
+                <Link to="/waste-recycling" className="v-card-link">
                     <div className="v-card-main-simple">
                         <div className="v-img-box">
-                            <img src="/assets/images/join2.png" alt="Waste Reprocessing" />
+                            <img src="/assets/images/pill_recycling.png" alt="Waste Recycling" />
                         </div>
                         <div className="v-info-box">
-                            <h3>Waste Reprocessing</h3>
-                            <p>Advanced facilities for plastics, metals, and electronics recycling into high-grade raw materials.</p>
+                            <h3>Waste Recycling</h3>
+                            <p>Advanced facilities for plastics, metals, and electronics recycling into high-grade raw materials for industry.</p>
                             <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
                         </div>
                     </div>
-                </a>
-                <a href="#" className="v-card-link">
-                    <div className="v-card-main-simple">
-                        <div className="v-img-box">
-                            <img src="/assets/images/airport.png" alt="Eco-Solutions" />
-                        </div>
-                        <div className="v-info-box">
-                            <h3>Eco-Solutions</h3>
-                            <p>Consulting for corporations to reduce their environmental footprint and achieve zero-waste goals.</p>
-                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>
+                </Link>
             </div>
         </div>
     </section>

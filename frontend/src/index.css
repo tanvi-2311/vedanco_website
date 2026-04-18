@@ -69,15 +69,38 @@ header {
     padding: 15px 0;
 }
 
+
 .logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--primary-green);
-    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #1a4d2e; /* Original Vedanco dark green */
+    text-decoration: none;
+    font-family: 'Playfair Display', serif; /* Matching the serif brand image */
 }
 
-.logo-v {
-    color: var(--text-dark);
+.logo-icon-v {
+    width: 42px;
+    height: 42px;
+    background-color: #1a4d2e; /* Dark green circle */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 700;
+    font-family: 'Libre Baskerville', 'Times New Roman', serif;
+    padding-bottom: 2px; /* Visual alignment for serif V */
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo-text {
+    letter-spacing: -0.2px;
+    transform: translateY(-1px);
 }
 
 nav ul {
@@ -1893,3 +1916,315 @@ main {
 
     
 
+
+/* Adani-Inspired Corporate Design System */
+:root {
+    --adani-blue: #004d71;
+    --adani-teal: #008291;
+    --adani-gray: #f4f6f8;
+    --adani-dark: #1a1a1a;
+    --accent-bar-width: 6px;
+}
+
+.business-detail-page {
+    background: #fff;
+    color: var(--adani-dark);
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Adani Hero Section */
+.adani-hero {
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.adani-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+}
+
+.adani-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-left: 8%;
+    max-width: 800px;
+}
+
+.adani-hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    border-left: var(--accent-bar-width) solid var(--adani-teal);
+    padding-left: 30px;
+}
+
+/* Stately Section Headers */
+.adani-section-head {
+    margin-bottom: 60px;
+    border-left: var(--accent-bar-width) solid var(--adani-blue);
+    padding-left: 25px;
+}
+
+.adani-section-head h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--adani-blue);
+    margin-bottom: 10px;
+}
+
+.adani-section-head p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+}
+
+/* Clean Stat Grid */
+.adani-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #eee;
+    margin: 50px 0;
+    border: 1px solid #eee;
+}
+
+.adani-stat-item {
+    background: #fff;
+    padding: 50px 30px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.adani-stat-item:hover {
+    background: var(--adani-gray);
+}
+
+.adani-stat-item .val {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--adani-blue);
+    margin-bottom: 10px;
+}
+
+.adani-stat-item .label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #777;
+    font-weight: 600;
+}
+
+/* Split Operational Section */
+.adani-ops-split {
+    display: flex;
+    align-items: stretch;
+    min-height: 500px;
+    margin: 100px 0;
+}
+
+.adani-ops-img {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+}
+
+.adani-ops-content {
+    flex: 0 0 45%;
+    background: var(--adani-blue);
+    color: #fff;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.adani-ops-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    border-left: var(--accent-bar-width) solid var(--adani-teal);
+    padding-left: 20px;
+}
+
+.adani-ops-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+/* High-Impact Project Cards */
+.adani-project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.adani-card {
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.adani-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.adani-card-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.adani-card-body {
+    padding: 35px;
+}
+
+.adani-card h4 {
+    font-size: 1.5rem;
+    color: var(--adani-blue);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.adani-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.read-more-link {
+    color: var(--adani-teal);
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.read-more-link:hover i {
+    transform: translateX(5px);
+}
+
+.read-more-link i {
+    transition: transform 0.3s;
+}
+
+/* Adani CTA Bar */
+.adani-cta-bar {
+    background: var(--adani-gray);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.btn-adani {
+    background: var(--adani-blue);
+    color: #fff;
+    padding: 18px 45px;
+    border-radius: 2px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-adani:hover {
+    background: var(--adani-teal);
+}
+
+/* Adani-Inspired Motion Engine (Scoped to detail pages to protect Home page) */
+.business-detail-page .reveal-up { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.business-detail-page .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.business-detail-page .reveal-right { opacity: 0; transform: translateX(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+
+.business-detail-page .reveal-up.active, 
+.business-detail-page .reveal-left.active, 
+.business-detail-page .reveal-right.active {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* Stagger Logic for detail pages */
+.business-detail-page .stagger-item { opacity: 0; transform: translateY(30px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.business-detail-page .stagger-item.active { opacity: 1; transform: translateY(0); }
+
+.business-detail-page .stagger-item:nth-child(1) { transition-delay: 0.1s; }
+.business-detail-page .stagger-item:nth-child(2) { transition-delay: 0.2s; }
+.business-detail-page .stagger-item:nth-child(3) { transition-delay: 0.3s; }
+.business-detail-page .stagger-item:nth-child(4) { transition-delay: 0.4s; }
+.business-detail-page .stagger-item:nth-child(5) { transition-delay: 0.5s; }
+
+/* Sticky Background Reveal Effect */
+.business-detail-page .sticky-reveal-section {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+}
+
+.business-detail-page .sticky-bg-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.business-detail-page .sticky-content-box {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+/* Scoped section overrides for detail pages only */
+.business-detail-page section:not(.sticky-reveal-section) {
+    position: relative;
+    background: #fff;
+    z-index: 10;
+    padding: 120px 0;
+}
+
+/* Accent drawing animation */
+.business-detail-page .accent-bar-reveal {
+    position: relative;
+}
+.business-detail-page .accent-bar-reveal::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; width: var(--accent-bar-width);
+    height: 0; background: var(--adani-teal);
+    transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.business-detail-page .accent-bar-reveal.active::before {
+    height: 100%;
+}
+
+.footer-logo-override {
+    color: #fff !important;
+    margin-bottom: 25px;
+}
+.footer-logo-override .logo-icon-v {
+    background-color: #fff;
+    color: #1a4d2e;
+}

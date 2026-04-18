@@ -90,10 +90,64 @@ const Aviation = () => {
 
     <section className="cta-section">
         <div className="container">
+<<<<<<< HEAD
             <div className="cta-box reveal">
                 <h3>Ready to take off?</h3>
                 <p>Experience world-class aviation infrastructure with Vedanco.</p>
                 <a href="#" className="btn-profile">Partner With Us</a>
+=======
+            <h2 className="section-title-alt">Advanced Aviation Infrastructure</h2>
+            <div className="verticals-link-grid">
+                
+                <Link to="/airlines" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/airlines_hero.png" alt="Airlines" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Airlines</h3>
+                            <p>International passenger excellence with a focus on hospitality and global connectivity.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/executive-jets" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/executive_jets_hero.png" alt="Executive Jets" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Executive Jets</h3>
+                            <p>Privacy and luxury on-demand for global travel with our elite fleet of private jets.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/smart-terminals" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/smart_terminals_hero.png" alt="Smart Terminals" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Smart Terminals</h3>
+                            <p>Next-gen airport infrastructure powered by biometrics and real-time AI flow monitoring.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="/aviation-cargo" className="v-card-link">
+                    <div className="v-card-main-simple">
+                        <div className="v-img-box">
+                            <img src="/assets/images/aviation_cargo_hero.png" alt="Cargo Services" />
+                        </div>
+                        <div className="v-info-box">
+                            <h3>Aviation Cargo</h3>
+                            <p>Specialized air-freight and technical handling for critical industrial and tech assets.</p>
+                            <span className="view-details-btn">View Details <i className="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </Link>
+>>>>>>> c8256d2b3642aff57e40aaa00538627918ec6910
             </div>
         </div>
     </section>
