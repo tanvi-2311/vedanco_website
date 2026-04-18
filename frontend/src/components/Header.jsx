@@ -11,7 +11,7 @@ const Header = () => {
             <Link to="/" className="logo">Vedan<span className="logo-v">CO</span></Link>
             <nav>
               <ul>
-                <li><a href="#about">About Us</a></li>
+                <li><Link to="/about">About Us</Link></li>
                 <li className="has-mega">
                   <Link to="/businesses">Businesses <i className="fas fa-chevron-down"></i></Link>
                   <div className="mega-menu">
@@ -70,7 +70,7 @@ const Header = () => {
                   </div>
                 </li>
                 <li><a href="#sustainability">Sustainability</a></li>
-                <li><a href="#foundation">Vedanco Foundation</a></li>
+                <li><Link to="/foundation">Vedanco Foundation</Link></li>
                 <li><a href="#investors">Investors</a></li>
               </ul>
             </nav>

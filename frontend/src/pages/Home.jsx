@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+
   const [isExpanded, setIsExpanded] = useState(true); // Default to expanded for now as in the user's view
   const [isProfileExpanded, setIsProfileExpanded] = useState(false);
 
@@ -24,7 +25,7 @@ const Home = () => {
 
     return () => observer.disconnect();
   }, []);
-  
+
   const businesses = [
     {
       id: 'import-export',
@@ -136,8 +137,8 @@ const Home = () => {
                 <p>At Vedanco Group, our commitment to excellence has propelled us to the forefront of global logistics, energy, and resources. We don't just build ports and airports; we build gateways to the future.</p>
                 <p>Through our integrated business model, we ensure that every facet of our operations contributes to the broader goal of nation-building. Sustainability is at the core of everything we do, ensuring that our growth today does not compromise the environment of tomorrow.</p>
               </div>
-              <button 
-                className="btn-profile" 
+              <button
+                className="btn-profile"
                 id="view-profile-btn"
                 onClick={() => setIsProfileExpanded(!isProfileExpanded)}
               >
@@ -158,11 +159,11 @@ const Home = () => {
               <span className="tab-item">Listed Companies</span>
             </div>
           </div>
-          
+
           <div className="business-layout-grid">
             <div className="small-grid-8">
               {businesses.map((biz) => (
-                <div 
+                <div
                   key={biz.id}
                   className={`biz-tile ${activeBiz.id === biz.id ? 'active-gradient' : ''}`}
                   onMouseEnter={() => setActiveBiz(biz)}
@@ -182,7 +183,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="featured-biz-area">
               <div className="main-feature-img">
                 <img src={activeBiz.featureImg} alt={activeBiz.title} />
