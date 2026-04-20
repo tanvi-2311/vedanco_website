@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
@@ -8,13 +9,12 @@ const Footer = () => {
         <div className="footer-grid">
           <div className="footer-col">
             <div className="logo footer-logo-override">
-              <div className="logo-icon-v">V</div>
+              <Logo className="logo-icon-v" />
               <span className="logo-text">Vedanco</span>
             </div>
             <p>Building world-class infrastructure and empowering lives through sustainable development.</p>
             <div className="social-icons">
               <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
               <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
               <a href="#" className="social-icon"><i className="fab fa-youtube"></i></a>
             </div>

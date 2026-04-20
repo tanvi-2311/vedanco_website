@@ -17,7 +17,7 @@ const WindPower = () => {
 
     return (
         <main className="business-detail-page">
-            <section className="adani-hero" style={{ backgroundImage: "url('/assets/images/pill_energy.png')" }}>
+            <section className="adani-hero" style={{ backgroundImage: "url('/assets/images/grid_solar.png')" }}>
                 <div className="adani-hero-overlay"></div>
                 <div className="container adani-hero-content">
                     <h1 className="reveal-left">Wind <br/>Power</h1>
@@ -41,7 +41,7 @@ const WindPower = () => {
             </section>
 
             <section className="sticky-reveal-section">
-                <div className="sticky-bg-img" style={{ backgroundImage: "url('/assets/images/pill_energy.png')" }}></div>
+                <div className="sticky-bg-img" style={{ backgroundImage: "url('/assets/images/sustainability.png')" }}></div>
                 <div className="sticky-content-box">
                     <div className="container text-center">
                         <h2 className="reveal-up" style={{fontSize: '3.5rem', fontWeight: 900, color: '#fff', marginBottom: '20px'}}>The Constant Force</h2>
@@ -51,7 +51,7 @@ const WindPower = () => {
             </section>
 
             <section className="adani-ops-split" style={{marginTop: 0}}>
-                <div className="adani-ops-img reveal-left" style={{ backgroundImage: "url('/assets/images/pill_energy.png')" }}></div>
+                <div className="adani-ops-img reveal-left" style={{ backgroundImage: "url('/assets/images/grid_solar.png')" }}></div>
                 <div className="adani-ops-content reveal-right">
                     <h3>Atmospheric Energy</h3>
                     <p>Our wind assets utilize AI-predictive maintenance to ensure consistent energy delivery, powering the global shift towards a truly sustainable industrial grid.</p>
@@ -64,15 +64,15 @@ const WindPower = () => {
                     <div className="adani-section-head accent-bar-reveal"><h2 className="reveal-up">Strategic Verticals</h2></div>
                     <div className="adani-project-grid">
                         <div className="adani-card stagger-item">
-                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/pill_energy.png')" }}></div>
+                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/grid_solar.png')" }}></div>
                             <div className="adani-card-body"><h4>Onshore Wind</h4><p>Large-scale developments in high-wind zones with integrated storage.</p></div>
                         </div>
                         <div className="adani-card stagger-item">
-                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/sea_cargo_hero.png')" }}></div>
+                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/grid_port_aerial.png')" }}></div>
                             <div className="adani-card-body"><h4>Offshore Tech</h4><p>Pioneering the next frontier of deep-water high-capacity wind turbine assets.</p></div>
                         </div>
                         <div className="adani-card stagger-item">
-                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/grid_solar.png')" }}></div>
+                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/sustainability.png')" }}></div>
                             <div className="adani-card-body"><h4>O&M Services</h4><p>Specialized drone-based inspection and AI-driven asset longevity services.</p></div>
                         </div>
                     </div>

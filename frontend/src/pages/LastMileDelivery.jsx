@@ -17,7 +17,7 @@ const LastMileDelivery = () => {
 
     return (
         <main className="business-detail-page">
-            <section className="adani-hero" style={{ backgroundImage: "url('/assets/images/last_mile_hero.png')" }}>
+            <section className="adani-hero" style={{ backgroundImage: "url('/assets/images/last_mile_delivery_hero.png')" }}>
                 <div className="adani-hero-overlay"></div>
                 <div className="container adani-hero-content">
                     <h1 className="reveal-left">Final Mile <br/>Delivery</h1>
@@ -41,7 +41,7 @@ const LastMileDelivery = () => {
             </section>
 
             <section className="sticky-reveal-section">
-                <div className="sticky-bg-img" style={{ backgroundImage: "url('/assets/images/last_mile_hero.png')" }}></div>
+                <div className="sticky-bg-img" style={{ backgroundImage: "url('/assets/images/last_mile_delivery_hero.png')" }}></div>
                 <div className="sticky-content-box">
                     <div className="container text-center">
                         <h2 className="reveal-up" style={{fontSize: '3.5rem', fontWeight: 900, color: '#fff', marginBottom: '20px'}}>Precision in Proximity</h2>
@@ -51,7 +51,7 @@ const LastMileDelivery = () => {
             </section>
 
             <section className="adani-ops-split" style={{marginTop: 0}}>
-                <div className="adani-ops-img reveal-left" style={{ backgroundImage: "url('/assets/images/last_mile_hero.png')" }}></div>
+                <div className="adani-ops-img reveal-left" style={{ backgroundImage: "url('/assets/images/last_mile_delivery_hero.png')" }}></div>
                 <div className="adani-ops-content reveal-right">
                     <h3>The Final Connection</h3>
                     <p>Our last-mile solutions utilize hyper-local distribution and AI-optimized fleets to ensure that the "Final Mile" is as efficient as the long-haul transit.</p>
@@ -64,7 +64,7 @@ const LastMileDelivery = () => {
                     <div className="adani-section-head accent-bar-reveal"><h2 className="reveal-up">Service Highlights</h2></div>
                     <div className="adani-project-grid">
                         <div className="adani-card stagger-item">
-                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/last_mile_hero.png')" }}></div>
+                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/last_mile_delivery_hero.png')" }}></div>
                             <div className="adani-card-body"><h4>E-Com Fulfillment</h4><p>Integrated delivery solutions for leading global platforms with same-day capability.</p></div>
                         </div>
                         <div className="adani-card stagger-item">

@@ -274,7 +274,7 @@ const About = () => {
                 <div className="container">
                     <div className="leadership-flex">
                         <div className="leader-image">
-                            <img src="/assets/images/nachiket-patel.png" alt="Nachiket Patel" />
+                            <img src="/assets/images/chairman_new.png.jpeg" alt="Nachiket Patel" />
                             <div className="leader-info-overlay">
                                 <h3>Nachiket Patel</h3>
                                 <span>Founder & CEO</span>
@@ -285,10 +285,6 @@ const About = () => {
                             <h2>Driving Innovation with a Vision</h2>
                             <p>Nachiket Patel, the Founder and CEO of Vedanco Group, brings a fresh and futuristic approach to traditional industries. Under his leadership, Vedanco has evolved into a global powerhouse, committed to building an integrated ecosystem that bridges the digital and physical worlds.</p>
                             <p>"Our goal is not just to build businesses, but to build a sustainable future through technology and infrastructure that works for everyone."</p>
-                            <div className="social-links">
-                                <a href="#"><i className="fab fa-linkedin"></i></a>
-                                <a href="#"><i className="fab fa-twitter"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>

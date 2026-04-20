@@ -17,7 +17,7 @@ const WasteRecyclingDetail = () => {
 
     return (
         <main className="business-detail-page">
-            <section className="adani-hero" style={{ backgroundImage: "url('/assets/images/pill_recycling.png')" }}>
+            <section className="adani-hero" style={{ backgroundImage: "url('/assets/images/sustainability.png')" }}>
                 <div className="adani-hero-overlay"></div>
                 <div className="container adani-hero-content">
                     <h1 className="reveal-left">Circular <br/>Economy</h1>
@@ -41,7 +41,7 @@ const WasteRecyclingDetail = () => {
             </section>
 
             <section className="sticky-reveal-section">
-                <div className="sticky-bg-img" style={{ backgroundImage: "url('/assets/images/pill_recycling.png')" }}></div>
+                <div className="sticky-bg-img" style={{ backgroundImage: "url('/assets/images/grid_solar.png')" }}></div>
                 <div className="sticky-content-box">
                     <div className="container text-center">
                         <h2 className="reveal-up" style={{fontSize: '3.5rem', fontWeight: 900, color: '#fff', marginBottom: '20px'}}>Waste to Value</h2>
@@ -51,7 +51,7 @@ const WasteRecyclingDetail = () => {
             </section>
 
             <section className="adani-ops-split" style={{marginTop: 0}}>
-                <div className="adani-ops-img reveal-left" style={{ backgroundImage: "url('/assets/images/pill_recycling.png')" }}></div>
+                <div className="adani-ops-img reveal-left" style={{ backgroundImage: "url('/assets/images/sustainability.png')" }}></div>
                 <div className="adani-ops-content reveal-right">
                     <h3>Circular Ops</h3>
                     <p>By recovering high-purity polymers, metals, and rare-earth elements, we provide the raw materials for a sustainable industrial future.</p>
@@ -64,7 +64,7 @@ const WasteRecyclingDetail = () => {
                     <div className="adani-section-head accent-bar-reveal"><h2 className="reveal-up">Recycling Verticals</h2></div>
                     <div className="adani-project-grid">
                         <div className="adani-card stagger-item">
-                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/pill_recycling.png')" }}></div>
+                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/grid_office.png')" }}></div>
                             <div className="adani-card-body"><h4>Industrial Recovery</h4><p>Processing metal and plastic waste back into manufacturing feedstock.</p></div>
                         </div>
                         <div className="adani-card stagger-item">

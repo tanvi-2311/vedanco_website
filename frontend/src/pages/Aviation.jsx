@@ -8,7 +8,7 @@ const Aviation = () => {
             id: 'terminal-ops',
             title: 'Terminal Operations',
             desc: 'We manage world-class airport terminals with a focus on passenger comfort and operational efficiency. Our smart terminals use biometric boarding and advanced logistics to handle millions of travelers.',
-            img: '/assets/images/airport.png',
+            img: '/assets/images/smart_terminals_hero.png',
             stats: ['50M+ Capacity', 'Smart Biometrics', 'Modern Lounges']
         },
         {
@@ -31,7 +31,7 @@ const Aviation = () => {
 
     return (
         <main>
-            <section className="page-banner" style={{ backgroundImage: "url('/assets/images/airport.png')" }}>
+            <section className="page-banner" style={{ backgroundImage: "url('/assets/images/smart_terminals_hero.png')" }}>
         <div className="container banner-inner">
             <div className="banner-content-bottom">
                 <h1>Aviation</h1>

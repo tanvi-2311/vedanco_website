@@ -72,7 +72,7 @@ const SolarEnergyDetail = () => {
                             <div className="adani-card-body"><h4>Commercial Solar</h4><p>Tailored rooftop and site solutions for industrial complexes globally.</p></div>
                         </div>
                         <div className="adani-card stagger-item">
-                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/pill_energy.png')" }}></div>
+                            <div className="adani-card-img" style={{ backgroundImage: "url('/assets/images/grid_solar.png')" }}></div>
                             <div className="adani-card-body"><h4>BESS Integration</h4><p>Advanced battery storage to manage production peaks and grid stability.</p></div>
                         </div>
                     </div>

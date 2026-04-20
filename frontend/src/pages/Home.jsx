@@ -8,20 +8,44 @@ const Home = () => {
 
   const heroSlides = [
     { bg: '/assets/images/hero_office.png', title: 'Building Infrastructure for a New Era.', pill: '/assets/images/pill_port.png', label: 'Ports' },
-    { bg: '/assets/images/pill_logistics.png', title: 'Global Logistics Redefined.', pill: '/assets/images/pill_logistics.png', label: 'Logistics' },
-    { bg: '/assets/images/airport.png', title: 'Future-Ready Aviation Hubs.', pill: '/assets/images/airport.png', label: 'Airports' },
+    { 
+      bg: '/assets/images/transport_hero.png', 
+      video: 'https://videos.pexels.com/video-files/4440958/4440958-uhd_2560_1440_30fps.mp4',
+      title: 'Global Logistics Redefined.', 
+      pill: '/assets/images/pill_logistics.png', 
+      label: 'Logistics' 
+    },
+    { bg: '/assets/images/smart_terminals_hero.png', title: 'Future-Ready Aviation Hubs.', pill: '/assets/images/smart_terminals_hero.png', label: 'Airports' },
     { bg: '/assets/images/grid_solar.png', title: 'Efficient Sustainable Energy Solutions.', pill: '/assets/images/pill_logistics.png', label: 'Energy' },
     { bg: '/assets/images/join1.png', title: 'Empowering Growth Across Sectors.', pill: '/assets/images/join1.png', label: 'People' }
   ];
 
   const [activeHero, setActiveHero] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveHero((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
+      handleNextSlide();
+    }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeHero]);
+
+  const handleNextSlide = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveHero((prev) => (prev + 1) % heroSlides.length);
+      setIsTransitioning(false);
+    }, 800);
+  };
+
+  const handlePillClick = (index) => {
+    if (index === activeHero) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveHero(index);
+      setIsTransitioning(false);
+    }, 800);
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -96,8 +120,8 @@ const Home = () => {
       id: 'aviation',
       title: 'Aviation',
       path: '/aviation',
-      featureImg: '/assets/images/airport.png',
-      tileImg: '/assets/images/airport.png',
+      featureImg: '/assets/images/smart_terminals_hero.png',
+      tileImg: '/assets/images/smart_terminals_hero.png',
       subnav: ['Airlines', 'Executive Jets', 'Cargo Services', 'Smart Terminals']
     },
     {
@@ -115,25 +139,57 @@ const Home = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="hero" style={{ backgroundImage: `url(${heroSlides[activeHero].bg})` }}>
-        <div className="container">
-          <div className="hero-content">
+      <section className="hero">
+        <div 
+          className="hero-image-bg" 
+          style={{ backgroundImage: `url(${heroSlides[activeHero].bg})` }}
+        ></div>
+        
+        {heroSlides[activeHero].video && (
+          <video 
+            key={heroSlides[activeHero].video}
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            poster={heroSlides[activeHero].bg}
+            className="hero-video-bg"
+          >
+            <source src={heroSlides[activeHero].video} type="video/mp4" />
+          </video>
+        )}
+        
+        <div className="hero-overlay"></div>
+        <div className="container hero-flex-container">
+          <div className={`hero-content ${isTransitioning ? 'exit' : 'enter'}`}>
+            <span className="hero-category-tag">VEDANCO GROUP</span>
             <h1>{heroSlides[activeHero].title}</h1>
-            <a href="#" className="btn-know-more">Know More</a>
+            <div className="hero-btn-group">
+                <Link to="/about" className="btn-know-more">Know More</Link>
+                <div className="scroll-indicator">
+                    <span className="mouse"></span>
+                    <span className="text">Scroll Down</span>
+                </div>
+            </div>
           </div>
         </div>
+
         <div className="hero-slider-wrapper">
-          <div className="hero-slider">
-            {heroSlides.map((slide, index) => (
-              <div 
-                key={index} 
-                className={`slide-pill ${activeHero === index ? 'active' : ''}`}
-                onClick={() => setActiveHero(index)}
-              >
-                <img src={slide.pill} alt={slide.label} />
-              </div>
-            ))}
+          <div className={`hero-right-tiles bottom-nav ${isTransitioning ? 'exit' : 'enter'}`}>
+              {heroSlides.map((slide, index) => (
+                  <div 
+                    key={index} 
+                    className={`stagger-tile tile-${index} ${activeHero === index ? 'active-tile' : ''}`} 
+                    style={{backgroundImage: `url(${slide.bg})` || `url(${slide.video})` }}
+                    onClick={() => handlePillClick(index)}
+                  >
+                      <div className="tile-hover-info">
+                          <span>{slide.label}</span>
+                      </div>
+                  </div>
+              ))}
           </div>
+
           <div className="slider-controls">
             <button className="slider-prev" onClick={() => setActiveHero((activeHero - 1 + heroSlides.length) % heroSlides.length)}>
               <i className="fas fa-chevron-left"></i>
@@ -158,7 +214,7 @@ const Home = () => {
       <section className="about-section" id="about">
         <div className="about-grid-full">
           <div className="chairman-container reveal">
-            <img src="/assets/images/chairman.png" alt="Chairman Portrait" className="chairman-img" />
+            <img src="/assets/images/chairman_new.png.jpeg" alt="Chairman Portrait" className="chairman-img" />
           </div>
           <div className="about-text">
             <div className="text-content-wrapper reveal">
@@ -260,7 +316,7 @@ const Home = () => {
               </div>
             </div>
             <div className="news-card">
-              <div className="news-thumb"><img src="/assets/images/airport.png" alt="News 3" /></div>
+              <div className="news-thumb"><img src="/assets/images/news1.png" alt="News 3" /></div>
               <div className="news-body">
                 <h4>Unveiling the Future of Smart Airports</h4>
                 <p>Digital transformation initiatives at Vedanco Terminals set new industry benchmarks.</p>
