@@ -29,8 +29,59 @@
     p { font-size: 0.95rem !important; line-height: 1.6 !important; }
     
     /* Header/Nav */
-    nav { display: none !important; }
-    .top-strip { display: none; }
+    nav { 
+        display: block !important;
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background: var(--primary-green) !important;
+        z-index: 2000 !important;
+        transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        padding-top: 100px !important;
+    }
+    
+    nav.active { right: 0 !important; }
+    
+    nav ul { 
+        flex-direction: column !important; 
+        align-items: center !important; 
+        gap: 30px !important; 
+        width: 100% !important;
+    }
+    
+    nav ul li a { 
+        color: #fff !important; 
+        font-size: 1.5rem !important; 
+    }
+    
+    .mega-menu { display: none !important; } /* Hide mega menus on mobile for now */
+
+    /* Hamburger Icon Styling */
+    .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 3000;
+        position: relative;
+    }
+    
+    .bar {
+        width: 30px;
+        height: 3px;
+        background: var(--primary-green);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    .hamburger.active .bar { background: #fff; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    .header-content { padding: 10px 0; }
     
     /* Hero Fixes */
     .hero { height: auto !important; min-height: 70vh !important; padding: 80px 0 40px !important; }
