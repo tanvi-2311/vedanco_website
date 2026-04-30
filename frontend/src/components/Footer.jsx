@@ -12,35 +12,38 @@ const Footer = () => {
               <Logo className="logo-icon-v" />
               <span className="logo-text">Vedanco</span>
             </div>
-            <p>Building world-class infrastructure and empowering lives through sustainable development.</p>
+            <p>Building a Global Supply Chain, Technology & Infrastructure Ecosystem.</p>
             <div className="social-icons">
-              <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
-              <a href="#" className="social-icon"><i className="fab fa-youtube"></i></a>
+              <a href="https://linkedin.com/company/vedanco" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://facebook.com/vedanco" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fa-brands fa-facebook-f"></i></a>
+              <a href="https://youtube.com/@vedanco" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fa-brands fa-youtube"></i></a>
             </div>
           </div>
           <div className="footer-col">
-            <h5>About Us</h5>
+            <h5>Quick Links</h5>
             <ul>
-              <li><Link to="/about">Our Vision</Link></li>
-              <li><Link to="/about">Leadership</Link></li>
-              <li><Link to="/about">How We Work</Link></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/investors">Investors</Link></li>
+              <li><Link to="/foundation">Foundation</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h5>Sustainability</h5>
+            <h5>Services</h5>
             <ul>
-              <li><Link to="/energy">Green Energy</Link></li>
-              <li><Link to="/recycling">Waste Management</Link></li>
-              <li><Link to="/foundation">Vedanco Foundation</Link></li>
+              <li><Link to="/logistics">Logistics</Link></li>
+              <li><Link to="/import-export">Import Export</Link></li>
+              <li><Link to="/manpower">Manpower</Link></li>
+              <li><Link to="/software-solutions">Software</Link></li>
+              <li><Link to="/recycling">Recycling</Link></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h5>Contact</h5>
+            <h5>Resources</h5>
             <ul>
-              <li><a href="#">Media Center</a></li>
-              <li><a href="#">Investor Relations</a></li>
-              <li><a href="#">Careers</a></li>
+              <li><Link to="/sustainability">Sustainability</Link></li>
+              <li><Link to="/energy">Energy</Link></li>
+              <li><Link to="/aviation">Aviation</Link></li>
             </ul>
           </div>
         </div>

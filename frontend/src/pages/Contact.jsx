@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { supabase } from '../supabaseClient';
 import { Link } from 'react-router-dom';
 import '../index.css';
 
@@ -11,32 +10,31 @@ const Contact = () => {
         subject: 'General Inquiry',
         message: ''
     });
-    const [status, setStatus] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus('submitting');
-
-        const { data, error } = await supabase
-            .from('contacts')
-            .insert([
-                { 
-                    name: formData.name, 
-                    email: formData.email, 
-                    phone: formData.phone, 
-                    subject: formData.subject, 
-                    message: formData.message 
-                }
-            ]);
-
-        if (error) {
-            console.error('Error submitting form:', error);
-            setStatus('error');
-        } else {
-            setStatus('success');
-            setFormData({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' });
-        }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        const message = `New Inquiry from Website:
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+Message: ${formData.message}`;
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/919328088933?text=${encodedMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+    };
+
     return (
         <main className="contact-page">
             <section className="page-banner contact-hero" style={{
@@ -67,10 +65,11 @@ const Contact = () => {
                                         <label>Full Name</label>
                                         <input 
                                             type="text" 
+                                            name="name"
                                             placeholder="name" 
-                                            required 
                                             value={formData.name}
-                                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                            onChange={handleChange}
+                                            required 
                                         />
                                     </div>
                                     <div className="form-row">
@@ -78,27 +77,30 @@ const Contact = () => {
                                             <label>Email Address</label>
                                             <input 
                                                 type="email" 
+                                                name="email"
                                                 placeholder="email id" 
-                                                required 
                                                 value={formData.email}
-                                                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                                onChange={handleChange}
+                                                required 
                                             />
                                         </div>
                                         <div className="form-group">
                                             <label>Phone Number</label>
                                             <input 
                                                 type="tel" 
+                                                name="phone"
                                                 placeholder="number" 
                                                 value={formData.phone}
-                                                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label>Subject</label>
                                         <select 
+                                            name="subject"
                                             value={formData.subject}
-                                            onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                                            onChange={handleChange}
                                         >
                                             <option>General Inquiry</option>
                                             <option>Business Partnership</option>
@@ -109,18 +111,14 @@ const Contact = () => {
                                     <div className="form-group">
                                         <label>Message</label>
                                         <textarea 
+                                            name="message"
                                             rows="5" 
                                             placeholder="How can we help you?"
                                             value={formData.message}
-                                            onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                            onChange={handleChange}
                                         ></textarea>
                                     </div>
-                                    <button type="submit" className="btn-profile" disabled={status === 'submitting'}>
-                                        {status === 'submitting' ? 'Sending...' : 'Send Message'}
-                                    </button>
-                                    
-                                    {status === 'success' && <p className="success-msg">Message sent successfully!</p>}
-                                    {status === 'error' && <p className="error-msg">Failed to send message. Please try again.</p>}
+                                    <button type="submit" className="btn-profile">Send Message</button>
                                 </form>
                             </div>
 
@@ -137,10 +135,11 @@ const Contact = () => {
                                         <i className="fas fa-phone-alt"></i>
                                         <div>
                                             <h4>Call Us</h4>
-                                            <p>+91 06353097642 </p>
+                                            <p>+91 9328088933  </p>
                                         </div>
                                     </div>
                                     <div className="detail-item">
+
                                         <i className="fas fa-envelope"></i>
                                         <div>
                                             <h4>Email Us</h4>
@@ -152,9 +151,9 @@ const Contact = () => {
                                 <div className="social-connect">
                                     <h4>Follow Our Growth</h4>
                                     <div className="social-icons">
-                                        <a href="https://linkedin.com/company/vedanco" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
-                                        <a href="https://facebook.com/vedanco" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
-                                        <a href="https://instagram.com/vedanco" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+                                        <a href="https://linkedin.com/company/vedanco" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-linkedin-in"></i></a>
+                                        <a href="https://facebook.com/vedanco" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a>
+                                        <a href="https://instagram.com/vedanco" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>

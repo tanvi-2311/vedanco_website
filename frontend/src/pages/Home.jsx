@@ -74,7 +74,8 @@ const Home = () => {
       path: '/import-export',
       featureImg: '/assets/images/hero.png',
       tileImg: '/assets/images/hero.png',
-      subnav: ['Shipping', 'Cargo', 'Global Hub', 'Customs']
+      subnav: ['Shipping', 'Cargo', 'Global Hub', 'Customs'],
+      desc: 'Global sourcing and bulk trading of commodities including coal, scrap, textiles, and industrial materials.'
     },
     {
       id: 'logistics',
@@ -82,7 +83,8 @@ const Home = () => {
       path: '/logistics',
       featureImg: '/assets/images/pill_logistics.png',
       tileImg: '/assets/images/hero.png',
-      subnav: ['Warehousing', 'Transport', 'Last Mile', 'Supply Chain']
+      subnav: ['Warehousing', 'Transport', 'Last Mile', 'Supply Chain'],
+      desc: 'Efficient transport network, freight forwarding, and delivery systems ensuring cost optimization and smooth supply chain operations.'
     },
     {
       id: 'manpower',
@@ -90,7 +92,8 @@ const Home = () => {
       path: '/manpower',
       featureImg: '/assets/images/join1.png',
       tileImg: '/assets/images/join1.png',
-      subnav: ['Staffing', 'Training', 'Recruitment', 'HR Outsourcing']
+      subnav: ['Staffing', 'Training', 'Recruitment', 'HR Outsourcing'],
+      desc: 'Skilled and unskilled workforce solutions for industrial and technical requirements across domestic and international markets.'
     },
     {
       id: 'interior-design',
@@ -98,7 +101,8 @@ const Home = () => {
       path: '/interior-design',
       featureImg: '/assets/images/grid_office.png',
       tileImg: '/assets/images/grid_office.png',
-      subnav: ['Workspace', 'Residential', 'Premium', 'Consulting']
+      subnav: ['Workspace', 'Residential', 'Premium', 'Consulting'],
+      desc: 'Premium interior design and workspace solutions tailored for modern business environments.'
     },
     {
       id: 'recycling',
@@ -106,7 +110,8 @@ const Home = () => {
       path: '/recycling',
       featureImg: '/assets/images/sustainability.png',
       tileImg: '/assets/images/sustainability.png',
-      subnav: ['Waste to Energy', 'E-Waste', 'Paper', 'Sustainable Dev']
+      subnav: ['Waste to Energy', 'E-Waste', 'Paper', 'Sustainable Dev'],
+      desc: 'Waste-to-value solutions including plastic processing and recycled raw material production.'
     },
     {
       id: 'software-solutions',
@@ -114,7 +119,8 @@ const Home = () => {
       path: '/software-solutions',
       featureImg: '/assets/images/join2.png',
       tileImg: '/assets/images/join2.png',
-      subnav: ['Custom Dev', 'Cloud', 'Cybersecurity', 'AI Automation']
+      subnav: ['Custom Dev', 'Cloud', 'Cybersecurity', 'AI Automation'],
+      desc: 'Custom software, CRM/ERP systems, AI automation tools, and web/mobile app development.'
     },
     {
       id: 'aviation',
@@ -122,7 +128,8 @@ const Home = () => {
       path: '/aviation',
       featureImg: '/assets/images/smart_terminals_hero.png',
       tileImg: '/assets/images/smart_terminals_hero.png',
-      subnav: ['Airlines', 'Executive Jets', 'Cargo Services', 'Smart Terminals']
+      subnav: ['Airlines', 'Executive Jets', 'Cargo Services', 'Smart Terminals'],
+      desc: 'Comprehensive aviation services including cargo, executive travel, and smart terminal management.'
     },
     {
       id: 'energy',
@@ -130,7 +137,8 @@ const Home = () => {
       path: '/energy',
       featureImg: '/assets/images/grid_solar.png',
       tileImg: '/assets/images/grid_solar.png',
-      subnav: ['Carbon Credit', 'Solar', 'Wind', 'Green Hydrogen']
+      subnav: ['Carbon Credit', 'Solar', 'Wind', 'Green Hydrogen'],
+      desc: 'Sustainable energy solutions and carbon credit management for a greener future.'
     }
   ];
 
@@ -163,13 +171,13 @@ const Home = () => {
         <div className="container hero-flex-container">
           <div className={`hero-content ${isTransitioning ? 'exit' : 'enter'}`}>
             <span className="hero-category-tag">VEDANCO GROUP</span>
-            <h1>{heroSlides[activeHero].title}</h1>
+            <h1>Building a Global Supply Chain,<br />Technology & Infrastructure Ecosystem</h1>
+            <p className="hero-description" style={{ fontSize: '1.2rem', margin: '20px 0', opacity: '0.9', maxWidth: '600px', lineHeight: '1.6' }}>
+              Vedanco Group delivers integrated solutions across logistics, manpower, global trade, and technology to help businesses scale efficiently.
+            </p>
             <div className="hero-btn-group">
-                <Link to="/about" className="btn-know-more">Know More</Link>
-                <div className="scroll-indicator">
-                    <span className="mouse"></span>
-                    <span className="text">Scroll Down</span>
-                </div>
+                <Link to="/contact" className="btn-know-more">Get a Quote</Link>
+                <Link to="/contact" className="btn-know-more-outline" style={{ marginLeft: '15px', padding: '12px 30px', border: '1px solid #fff', color: '#fff', textDecoration: 'none', borderRadius: '4px', display: 'inline-block' }}>Contact Us</Link>
             </div>
           </div>
         </div>
@@ -218,18 +226,17 @@ const Home = () => {
           </div>
           <div className="about-text">
             <div className="text-content-wrapper reveal">
-              <h2>Leading with Vision, <br />Impacting Lives.</h2>
+              <h2>About Vedanco Group</h2>
               <div className={`profile-text-collapsed ${isProfileExpanded ? 'profile-text-expanded' : ''}`} id="profile-text">
-                <p className="quote">"Building infrastructure is building the future. We believe that world-class facilities are the backbone of a thriving nation."</p>
-                <p>At Vedanco Group, our commitment to excellence has propelled us to the forefront of global logistics, energy, and resources. We don't just build ports and airports; we build gateways to the future.</p>
-                <p>Through our integrated business model, we ensure that every facet of our operations contributes to the broader goal of nation-building. Sustainability is at the core of everything we do, ensuring that our growth today does not compromise the environment of tomorrow.</p>
+                <p>Vedanco Group is a multi-domain business ecosystem focused on global supply chain, logistics, manpower, technology, and infrastructure.</p>
+                <p>Our mission is to build a unified platform that connects industries, reduces inefficiencies, and enables scalable growth across multiple markets.</p>
               </div>
               <button
                 className="btn-profile"
                 id="view-profile-btn"
                 onClick={() => setIsProfileExpanded(!isProfileExpanded)}
               >
-                {isProfileExpanded ? 'Hide Profile' : 'View Profile'}
+                {isProfileExpanded ? 'Show Vision' : 'Read More'}
               </button>
             </div>
           </div>
@@ -240,7 +247,10 @@ const Home = () => {
       <section className="grid-feature-section" id="businesses">
         <div className="container">
           <div className="section-header-flex reveal">
-            <h2 className="section-title">BUSINESSES</h2>
+            <h2 className="section-title">CORE BUSINESS MODEL</h2>
+            <p style={{ margin: '-10px 0 30px', color: 'var(--primary-green)', fontWeight: '600' }}>
+              Integrated Ecosystem • Multi-Domain Growth • Strong Synergy
+            </p>
           </div>
 
           <div className="business-layout-grid">
@@ -249,8 +259,7 @@ const Home = () => {
                 <div
                   key={biz.id}
                   className={`biz-tile ${activeBiz.id === biz.id ? 'active-gradient' : ''}`}
-                  onMouseEnter={() => setActiveBiz(biz)}
-                  onClick={() => window.location.href = biz.path}
+                  onClick={() => setActiveBiz(biz)}
                 >
                   {activeBiz.id === biz.id ? (
                     <div className="biz-info">
@@ -269,8 +278,10 @@ const Home = () => {
 
             <div className="featured-biz-area">
               <div className="main-feature-img">
-                <img src={activeBiz.featureImg} alt={activeBiz.title} />
+                <img key={activeBiz.id} src={activeBiz.featureImg} alt={activeBiz.title} />
                 <div className="feature-overlay-nav">
+                  <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '10px' }}>{activeBiz.title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '20px', fontSize: '1rem', lineHeight: '1.5' }}>{activeBiz.desc}</p>
                   <ul className="feature-subnav">
                     {activeBiz.subnav.map((item, idx) => (
                       <li key={idx} className={idx === 0 ? 'active' : ''}>{item}</li>
@@ -360,6 +371,284 @@ const Home = () => {
               <div className="join-card-content">
                 <span>Diversity & Inclusion</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1. PROBLEM STATEMENT SECTION */}
+      <section className="investor-intro reveal" id="problem" style={{ background: '#fff', padding: '100px 0' }}>
+        <div className="container">
+          <div className="intro-card" style={{ borderLeft: '6px solid #e53935' }}>
+            <span className="tag" style={{ background: '#ffebee', color: '#e53935', padding: '5px 15px', borderRadius: '4px', fontWeight: '700', fontSize: '0.8rem', textTransform: 'uppercase' }}>Challenges</span>
+            <h2 style={{ fontSize: '2.8rem', margin: '20px 0', fontWeight: '800' }}>Challenges in Modern Industries</h2>
+            <div className="biz-domains" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '30px' }}>
+              {[
+                { icon: 'fa-network-wired', text: 'Fragmented Global Supply Chains' },
+                { icon: 'fa-dollar-sign', text: 'High Logistics Cost & Inefficiency' },
+                { icon: 'fa-users-slash', text: 'Lack of Reliable Manpower' },
+                { icon: 'fa-dumpster', text: 'Poor Waste Management Systems' },
+                { icon: 'fa-robot', text: 'Lack of Digital Systems & Automation' }
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '20px', background: '#fcfcfc', borderRadius: '12px', border: '1px solid #eee' }}>
+                  <i className={`fas ${item.icon}`} style={{ fontSize: '1.5rem', color: '#e53935' }}></i>
+                  <span style={{ fontWeight: '600', color: '#444' }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. SOLUTION SECTION */}
+      <section className="investor-intro reveal" id="solution" style={{ background: '#f9fbf9', padding: '100px 0' }}>
+        <div className="container">
+          <div className="intro-card" style={{ borderLeft: '6px solid var(--primary-green)' }}>
+            <span className="tag green">Innovation</span>
+            <h2 style={{ fontSize: '2.8rem', margin: '20px 0', fontWeight: '800' }}>One Platform. Multiple Solutions.</h2>
+            <p style={{ fontSize: '1.2rem', color: '#666', marginBottom: '40px' }}>
+              Vedanco provides an integrated, technology-driven ecosystem that combines logistics, manpower, trading, recycling, and software solutions into a single unified platform.
+              We enable end-to-end operational control with both physical and digital infrastructure.
+            </p>
+            <div className="biz-domains" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+              {[
+                { icon: 'fa-microchip', text: 'Integrated & Tech-Driven Ecosystem' },
+                { icon: 'fa-link', text: 'End-to-End Supply Chain Solutions' },
+                { icon: 'fa-cubes', text: 'Combined Logistics, Manpower & Trading' },
+                { icon: 'fa-recycle', text: 'Waste-to-Value Recycling System' },
+                { icon: 'fa-code', text: 'Custom Software & Automation Solutions' },
+                { icon: 'fa-desktop', text: 'Unified Platform (Physical + Digital Control)' }
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '20px', background: '#fff', borderRadius: '12px', border: '1px solid #eee' }}>
+                  <i className={`fas ${item.icon}`} style={{ fontSize: '1.5rem', color: 'var(--primary-green)' }}></i>
+                  <span style={{ fontWeight: '600', color: '#222' }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. MARKET OPPORTUNITY SECTION */}
+      <section className="market-section reveal" id="market" style={{ padding: '100px 0' }}>
+        <div className="container">
+          <h2 className="section-title text-center" style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '60px' }}>Market Opportunity</h2>
+          <div className="market-grid">
+            <div className="market-card">
+              <i className="fas fa-globe-americas" style={{ fontSize: '2.5rem', color: 'var(--primary-green)', marginBottom: '20px' }}></i>
+              <h3>$20+ Trillion</h3>
+              <p>Global Trade Market</p>
+            </div>
+            <div className="market-card highlight">
+              <i className="fas fa-truck-moving" style={{ fontSize: '2.5rem', color: '#fff', marginBottom: '20px' }}></i>
+              <h3>₹10+ Lakh Crore</h3>
+              <p>India Logistics Industry</p>
+            </div>
+            <div className="market-card">
+              <i className="fas fa-chart-line" style={{ fontSize: '2.5rem', color: 'var(--primary-green)', marginBottom: '20px' }}></i>
+              <h3>Massive & Growing</h3>
+              <p>Target markets include India, Middle East, and Africa, offering large-scale expansion opportunities.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.1 VEDANCO IN NUMBERS (Adani Style Impact) */}
+      <section className="stats-section reveal" style={{ padding: '80px 0', background: '#0d2b1a', color: '#fff' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', textAlign: 'center' }}>
+            <div>
+              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>5+</h2>
+              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>High Growth Sectors</p>
+            </div>
+            <div>
+              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>10+</h2>
+              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Global Markets</p>
+            </div>
+            <div>
+              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>100%</h2>
+              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Integrated Control</p>
+            </div>
+            <div>
+              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>2030</h2>
+              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Vision Target</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. HOW IT WORKS SECTION */}
+      <section className="how-it-works reveal" id="how-it-works" style={{ background: '#fff', padding: '100px 0' }}>
+        <div className="container text-center">
+          <h2 style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '60px' }}>How It Works</h2>
+          <div className="flow-grid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+            {[
+              { step: 'Requirement Submission', icon: 'fa-file-invoice' },
+              { step: 'Analysis & Planning', icon: 'fa-magnifying-glass-chart' },
+              { step: 'Execution', icon: 'fa-gears' },
+              { step: 'Delivery & Support', icon: 'fa-handshake-angle', success: true }
+            ].map((item, index) => (
+              <React.Fragment key={index}>
+                <div className={`flow-step ${item.success ? 'success' : ''}`} style={{ width: '220px', padding: '30px 20px' }}>
+                  <i className={`fas ${item.icon}`} style={{ display: 'block', fontSize: '2rem', marginBottom: '15px' }}></i>
+                  {item.step}
+                </div>
+                {index < 3 && <i className="fas fa-long-arrow-alt-right" style={{ color: '#ccc', fontSize: '1.5rem' }}></i>}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. REVENUE MODEL SECTION */}
+      <section className="rev-model-section reveal" id="revenue" style={{ background: '#f9fbf9' }}>
+        <div className="container">
+          <h2 className="section-title text-center" style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '60px' }}>Revenue Model</h2>
+          <div className="rev-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px', marginTop: '40px' }}>
+            {[
+              { title: 'Global Trading', desc: 'Margin-based revenue from bulk commodity trade.', icon: 'fa-ship' },
+              { title: 'Logistics Fees', desc: 'Recurring revenue from freight and warehousing.', icon: 'fa-truck-ramp-box' },
+              { title: 'Manpower Solutions', desc: 'Placement and management service fees.', icon: 'fa-user-tie' },
+              { title: 'Waste-to-Value', desc: 'Revenue from recycled raw material sales.', icon: 'fa-recycle' },
+              { title: 'Software SaaS', desc: 'Subscription and project-based digital revenue.', icon: 'fa-laptop-code' }
+            ].map((item, idx) => (
+              <div key={idx} style={{ padding: '30px', background: '#fff', borderRadius: '15px', border: '1px solid #eee', boxShadow: '0 5px 15px rgba(0,0,0,0.02)' }}>
+                <i className={`fas ${item.icon}`} style={{ fontSize: '1.5rem', color: 'var(--primary-green)', marginBottom: '15px' }}></i>
+                <h4 style={{ marginBottom: '10px', fontSize: '1.2rem' }}>{item.title}</h4>
+                <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.5' }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: '40px', padding: '30px', background: 'rgba(46, 125, 50, 0.05)', borderRadius: '15px', textAlign: 'center' }}>
+            <p style={{ fontSize: '1.1rem', color: '#444', fontWeight: '500' }}>
+              Our multi-stream revenue model ensures consistent growth through trading, logistics, manpower, recycling, and technology services.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. GROWTH PLAN SECTION */}
+      <section className="timeline-section reveal" id="growth" style={{ padding: '100px 0' }}>
+        <div className="container">
+          <h2 className="section-title text-center" style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '60px' }}>Strategic Growth Plan</h2>
+          <div className="timeline-track" style={{ marginTop: '0' }}>
+            {[
+              { phase: 'Year 1', biz: 'Trading & Recruitment', color: '#2e7d32' },
+              { phase: 'Year 2–3', biz: 'Logistics & Technology', color: '#388e3c' },
+              { phase: 'Year 3–5', biz: 'Recycling & Infrastructure', color: '#43a047' },
+              { phase: 'Year 5+', biz: 'Aviation & Energy', color: '#4caf50' }
+            ].map((step, idx) => (
+              <div key={idx} className="timeline-point">
+                <div className="point-circle" style={{ background: step.color }}></div>
+                <div className="point-content">
+                  <h5 style={{ color: step.color }}>{step.phase}</h5>
+                  <h4 style={{ fontSize: '1.2rem' }}>{step.biz}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6.1 OUR CORE VALUES */}
+      <section className="values-section reveal" style={{ padding: '100px 0', background: '#fff' }}>
+        <div className="container">
+          <h2 className="section-title text-center" style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '60px' }}>Our Core Values</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
+            {[
+              { title: 'Trust & Integrity', desc: 'Building long-term relationships through transparency and ethical business practices.', icon: 'fa-handshake' },
+              { title: 'Innovation', desc: 'Constantly evolving with technology to provide cutting-edge solutions.', icon: 'fa-lightbulb' },
+              { title: 'Safety First', desc: 'Ensuring the highest safety standards across all our physical operations.', icon: 'fa-shield-heart' },
+              { title: 'Sustainability', desc: 'Committing to waste reduction and green energy for a better tomorrow.', icon: 'fa-leaf' }
+            ].map((value, idx) => (
+              <div key={idx} style={{ padding: '40px', background: '#fcfcfc', borderRadius: '20px', border: '1px solid #eee', textAlign: 'center' }}>
+                <div style={{ width: '70px', height: '70px', background: 'rgba(46, 125, 50, 0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                  <i className={`fas ${value.icon}`} style={{ fontSize: '1.8rem', color: 'var(--primary-green)' }}></i>
+                </div>
+                <h4 style={{ marginBottom: '15px', fontSize: '1.3rem' }}>{value.title}</h4>
+                <p style={{ color: '#666', lineHeight: '1.6' }}>{value.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. COMPETITIVE ADVANTAGE SECTION */}
+      <section className="advantage-section reveal" id="advantage" style={{ padding: '100px 0', background: '#0d2b1a', color: '#fff' }}>
+        <div className="container">
+          <div className="adv-grid" style={{ gridTemplateColumns: '1fr 1.2fr', gap: '60px', padding: '0' }}>
+            <div className="adv-left">
+              <span className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: 'var(--accent-gold)', padding: '5px 15px', borderRadius: '4px', fontWeight: '700', fontSize: '0.8rem', textTransform: 'uppercase' }}>Why Vedanco</span>
+              <h2 style={{ fontSize: '3rem', margin: '20px 0', fontWeight: '800' }}>Competitive Advantage</h2>
+              <p style={{ fontSize: '1.1rem', opacity: '0.7', marginBottom: '30px' }}>We bridge physical assets with digital intelligence to create a resilient business model.</p>
+            </div>
+            <div className="adv-right" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', textAlign: 'left' }}>
+              {[
+                { icon: 'fa-layer-group', title: 'Integrated Ecosystem', desc: 'Integrated multi-domain ecosystem' },
+                { icon: 'fa-link', title: 'Full Control', desc: 'End-to-end supply chain control' },
+                { icon: 'fa-microchip', title: 'Tech Driven', desc: 'Technology-driven operations' },
+                { icon: 'fa-chart-line', title: 'Scalable', desc: 'Scalable and cost-efficient solutions' }
+              ].map((item, idx) => (
+                <div key={idx} style={{ background: 'rgba(255,255,255,0.05)', padding: '30px', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <i className={`fas ${item.icon}`} style={{ color: 'var(--accent-gold)', fontSize: '1.5rem', marginBottom: '15px' }}></i>
+                  <h4 style={{ marginBottom: '10px' }}>{item.title}</h4>
+                  <p style={{ fontSize: '0.9rem', opacity: '0.7' }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CONTACT SECTION */}
+      <section className="contact-home-section reveal" id="contact" style={{ padding: '100px 0', background: '#fcfcfc' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '60px' }}>
+            <div>
+              <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '20px' }}>Get In Touch</h2>
+              <p style={{ color: '#666', marginBottom: '30px' }}>Have a requirement or want to learn more about our ecosystem? Contact us today.</p>
+              <div style={{ marginBottom: '20px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
+                  <i className="fas fa-phone" style={{ color: 'var(--primary-green)' }}></i>
+                  <span style={{ fontWeight: '600' }}>+91 9510774987</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <i className="fas fa-globe" style={{ color: 'var(--primary-green)' }}></i>
+                  <a href="https://www.vedanco.com" style={{ color: 'inherit', textDecoration: 'none', fontWeight: '600' }}>www.vedanco.com</a>
+                </div>
+              </div>
+              <div style={{ marginTop: '30px' }}>
+                <h4 style={{ marginBottom: '15px', fontSize: '1rem' }}>Follow Our Growth</h4>
+                <div style={{ display: 'flex', gap: '15px' }}>
+                  <a href="https://linkedin.com/company/vedanco" target="_blank" rel="noopener noreferrer" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', textDecoration: 'none' }}>
+                    <i className="fa-brands fa-linkedin-in"></i>
+                  </a>
+                  <a href="https://facebook.com/vedanco" target="_blank" rel="noopener noreferrer" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', textDecoration: 'none' }}>
+                    <i className="fa-brands fa-facebook-f"></i>
+                  </a>
+                  <a href="https://instagram.com/vedanco" target="_blank" rel="noopener noreferrer" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #ddd', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', textDecoration: 'none' }}>
+                    <i className="fa-brands fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div style={{ background: '#fff', padding: '40px', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', border: '1px solid #eee' }}>
+              <form style={{ display: 'grid', gap: '20px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                  <input type="text" placeholder="Your Name" style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
+                  <input type="email" placeholder="Your Email" style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
+                </div>
+                <select style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}>
+                  <option>Select Requirement</option>
+                  <option>Logistics</option>
+                  <option>Import–Export</option>
+                  <option>Manpower</option>
+                  <option>Software Solutions</option>
+                  <option>Recycling</option>
+                </select>
+                <textarea placeholder="Your Message" rows="4" style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}></textarea>
+                <button type="submit" style={{ padding: '15px', background: 'var(--primary-green)', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: '700', cursor: 'pointer' }}>Send Message</button>
+              </form>
             </div>
           </div>
         </div>

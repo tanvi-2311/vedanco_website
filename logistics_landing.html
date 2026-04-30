@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedanco | Move Freight. Smarter. Faster.</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-main: #060608;
+            --bg-alt: #0a0a0d;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --bg-card-hover: rgba(255, 255, 255, 0.05);
+            --accent: #FF6B00;
+            --accent-hover: #E66000;
+            --accent-glow: rgba(255, 107, 0, 0.2);
+            --text-main: #FFFFFF;
+            --text-muted: #8E8E93;
+            --border-light: rgba(255, 255, 255, 0.08);
+            
+            --font-head: 'Oswald', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-accent { color: var(--accent); }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-family: var(--font-head);
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+            border: 1px solid var(--accent);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 24px 0;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(6, 6, 8, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: var(--font-head);
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-actions {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .login-btn {
+            font-family: var(--font-head);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        .login-btn:hover { color: var(--accent); }
+
+        .nav-actions .btn {
+            padding: 10px 24px;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 70% 50%, rgba(255, 107, 0, 0.08) 0%, var(--bg-main) 60%);
+        }
+
+        .map-animation {
+            position: absolute;
+            top: 50%;
+            right: -5%;
+            transform: translateY(-50%);
+            width: 65%;
+            height: 120%;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .route-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 85px;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            color: #fff;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-weight: 400;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Stats */
+        .stats {
+            padding: 60px 0;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 56px;
+            color: var(--accent);
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .stat-item p {
+            font-family: var(--font-head);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        /* Sections Global */
+        .section { padding: 140px 0; }
+        .section-alt { background: var(--bg-alt); }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header .tag {
+            display: inline-block;
+            color: var(--accent);
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            padding: 6px 16px;
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 52px;
+            margin-bottom: 24px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 50px 32px;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .service-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: rgba(255, 107, 0, 0.05);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--accent);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* How It Works */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps-line {
+            position: absolute;
+            top: 50px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background: var(--border-light);
+            z-index: 1;
+        }
+
+        .steps-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: var(--accent);
+            transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 250px;
+        }
+
+        .step-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--bg-alt);
+            border: 2px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 24px;
+            transition: all 0.4s ease;
+            color: var(--text-muted);
+        }
+
+        .step.active .step-icon {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: 60px;
+            background: var(--accent);
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .step h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 24px;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        
+        .feature-item:hover .feature-icon {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .feature-text h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+        }
+
+        .feature-image {
+            position: relative;
+        }
+
+        .feature-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-light);
+        }
+
+        .feature-image::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            z-index: -1;
+            border-radius: 4px;
+            opacity: 0.5;
+        }
+
+        /* Testimonials */
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .test-card {
+            padding: 48px 40px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .test-quote-icon {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 60px;
+            color: var(--accent);
+            opacity: 0.1;
+        }
+
+        .test-text {
+            font-size: 17px;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .test-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-top: 1px solid var(--border-light);
+            padding-top: 24px;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--accent);
+        }
+
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 14px;
+            color: var(--accent);
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(rgba(6, 6, 8, 0.9), rgba(6, 6, 8, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .cta-banner h2 {
+            font-size: 56px;
+            margin-bottom: 24px;
+        }
+
+        .cta-banner p {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 0 40px;
+            background: #000;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            margin-top: 24px;
+            margin-bottom: 32px;
+            max-width: 350px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            border-radius: 4px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateY(-4px);
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-col a {
+            color: var(--text-muted);
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-light);
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 { font-size: 70px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .test-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 992px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; gap: 50px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .map-animation { opacity: 0.3; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .login-btn { display: none; }
+            .hero { padding-top: 120px; text-align: center; }
+            .hero-content { margin: 0 auto; }
+            .hero h1 { font-size: 50px; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .hero-btns .btn { width: 100%; max-width: 300px; text-align: center; }
+            
+            .steps-container { flex-direction: column; align-items: center; gap: 50px; }
+            .steps-line { display: none; }
+            .step { width: 100%; max-width: 300px; }
+            
+            .test-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            
+            .section { padding: 80px 0; }
+            .cta-banner h2 { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-truck-fast"></i>
+                VEDAN<span>CO</span>
+            </a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#features">Features</a>
+                <a href="#testimonials">Testimonials</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="login-btn">Log In</a>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        
+        <!-- Animated Map Background -->
+        <div class="map-animation">
+            <svg class="route-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <!-- Routes -->
+                <path id="route1" d="M100 500 C 250 480, 300 200, 450 250 S 600 100, 750 150" fill="none" stroke="rgba(255, 107, 0, 0.2)" stroke-width="2" stroke-dasharray="6 6"/>
+                <path id="route2" d="M150 100 C 300 150, 400 450, 550 400 S 700 300, 750 450" fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="2" stroke-dasharray="4 4"/>
+                
+                <!-- Moving Trucks (Dots) -->
+                <circle r="8" fill="#FF6B00" filter="url(#glow)">
+                    <animateMotion dur="12s" repeatCount="indefinite">
+                        <mpath href="#route1"/>
+                    </animateMotion>
+                </circle>
+                <circle r="6" fill="#FFFFFF" filter="url(#glow)">
+                    <animateMotion dur="15s" repeatCount="indefinite" begin="2s">
+                        <mpath href="#route2"/>
+                    </animateMotion>
+                </circle>
+
+                <!-- Nodes -->
+                <circle cx="100" cy="500" r="7" fill="#060608" stroke="#FF6B00" stroke-width="3" filter="url(#glow)"/>
+                <circle cx="450" cy="250" r="7" fill="#060608" stroke="#FF6B00" stroke-width="3" filter="url(#glow)"/>
+                <circle cx="750" cy="150" r="7" fill="#060608" stroke="#FF6B00" stroke-width="3" filter="url(#glow)"/>
+                
+                <circle cx="150" cy="100" r="5" fill="#060608" stroke="#FFFFFF" stroke-width="2"/>
+                <circle cx="550" cy="400" r="5" fill="#060608" stroke="#FFFFFF" stroke-width="2"/>
+                <circle cx="750" cy="450" r="5" fill="#060608" stroke="#FFFFFF" stroke-width="2"/>
+            </svg>
+        </div>
+
+        <div class="container hero-content fade-up">
+            <h1>Move Freight.<br><span>Smarter.</span> Faster.</h1>
+            <p>AI-powered logistics platform designed for modern B2B supply chains. Optimize routes, track in real-time, and scale your operations effortlessly with Vedanco.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn btn-primary">Book Shipment</a>
+                <a href="#" class="btn btn-outline">Become a Partner</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-up">
+                    <h3>10K+</h3>
+                    <p>Deliveries</p>
+                </div>
+                <div class="stat-item fade-up delay-100">
+                    <h3>50+</h3>
+                    <p>Cities Covered</p>
+                </div>
+                <div class="stat-item fade-up delay-200">
+                    <h3>500+</h3>
+                    <p>Fleet Partners</p>
+                </div>
+                <div class="stat-item fade-up delay-300">
+                    <h3>98%</h3>
+                    <p>On-Time Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section section-alt">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="tag">Our Capabilities</span>
+                <h2>Comprehensive Logistics</h2>
+                <p>From full truckloads to specialized express deliveries, we offer an end-to-end suite of services to meet your exact supply chain needs.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card glass fade-up">
+                    <div class="service-icon"><i class="fa-solid fa-truck"></i></div>
+                    <h3>FTL Shipping</h3>
+                    <p>Dedicated full truckload services ensuring direct, secure, and fast delivery for large shipments.</p>
+                </div>
+                <div class="service-card glass fade-up delay-100">
+                    <div class="service-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <h3>LTL Freight</h3>
+                    <p>Cost-effective shared transport solutions for smaller loads without compromising reliability.</p>
+                </div>
+                <div class="service-card glass fade-up delay-200">
+                    <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Express Delivery</h3>
+                    <p>Time-critical shipments expedited through our AI-optimized priority routing network.</p>
+                </div>
+                <div class="service-card glass fade-up delay-300">
+                    <div class="service-icon"><i class="fa-solid fa-warehouse"></i></div>
+                    <h3>Warehousing</h3>
+                    <p>Strategically located, tech-enabled storage facilities to streamline your inventory management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="tag">The Process</span>
+                <h2>How Vedanco Works</h2>
+                <p>Three simple steps to digitize and execute your logistics operations flawlessly.</p>
+            </div>
+
+            <div class="steps-container fade-up">
+                <div class="steps-line">
+                    <div class="steps-progress"></div>
+                </div>
+                
+                <div class="step" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h3>Book Instantly</h3>
+                    <p>Get AI-driven instant quotes and secure your freight capacity in just a few clicks.</p>
+                </div>
+                
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3>Track Live</h3>
+                    <p>Monitor your shipment's exact location, temperature, and ETA through our central dashboard.</p>
+                </div>
+                
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3>Seamless Delivery</h3>
+                    <p>Receive automated ePODs and GST-compliant invoices immediately upon successful drop-off.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section section-alt">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-content fade-up">
+                    <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                        <span class="tag">Why Choose Us</span>
+                        <h2>The Vedanco Advantage</h2>
+                        <p style="margin: 0;">We blend industrial-grade operational capacity with cutting-edge SaaS technology.</p>
+                    </div>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div class="feature-text">
+                                <h3>Real-time Tracking</h3>
+                                <p>GPS and IoT integration provides absolute visibility. Know exactly where your cargo is 24/7.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-route"></i></div>
+                            <div class="feature-text">
+                                <h3>AI Route Optimization</h3>
+                                <p>Our algorithms factor in traffic, weather, and toll data to ensure the fastest, cheapest path.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                            <div class="feature-text">
+                                <h3>Automated GST Invoicing</h3>
+                                <p>Eliminate paperwork. Instantly generate compliant digital invoices and e-Way bills.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                            <div class="feature-text">
+                                <h3>24/7 Enterprise Support</h3>
+                                <p>Dedicated account managers and operations control tower working round the clock.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-image fade-up delay-200">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Modern Logistics and Warehousing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="tag">Client Success</span>
+                <h2>Trusted by Industry Leaders</h2>
+            </div>
+            
+            <div class="test-grid">
+                <div class="test-card glass fade-up">
+                    <i class="fa-solid fa-quote-right test-quote-icon"></i>
+                    <p class="test-text">"Vedanco has completely transformed our supply chain. The real-time tracking is a game changer for our operations. We no longer make blind guesses about inventory arrivals."</p>
+                    <div class="test-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Supply Chain Head, TechCorp India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-card glass fade-up delay-100">
+                    <i class="fa-solid fa-quote-right test-quote-icon"></i>
+                    <p class="test-text">"We've reduced our overall freight costs by 18% since switching to Vedanco's AI-optimized routes. The transparency in pricing and execution is simply unmatched."</p>
+                    <div class="test-author">
+                        <div class="author-avatar">SL</div>
+                        <div class="author-info">
+                            <h4>Sarah Lin</h4>
+                            <p>Operations Director, GlobalMart</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-card glass fade-up delay-200">
+                    <i class="fa-solid fa-quote-right test-quote-icon"></i>
+                    <p class="test-text">"Reliable, transparent, and blazing fast. Their FTL service scales perfectly with our seasonal demands. Their automated invoicing saves our finance team hours."</p>
+                    <div class="test-author">
+                        <div class="author-avatar">AP</div>
+                        <div class="author-info">
+                            <h4>Amit Patel</h4>
+                            <p>CEO, BuildPro Logistics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner fade-up">
+        <div class="container">
+            <h2>Ready to Scale Your Logistics?</h2>
+            <p>Join 500+ enterprises moving freight smarter with Vedanco's next-gen platform.</p>
+            <a href="#" class="btn btn-primary" style="font-size: 18px; padding: 20px 40px;">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="logo">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        VEDAN<span>CO</span>
+                    </a>
+                    <p>Simplifying B2B logistics for the modern era. We build technology that moves the physical world efficiently.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Docs</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vedanco Technologies Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Intersection Observer for scroll animations (Fade up)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Animate progress line and steps in "How it works"
+            const stepsSection = document.querySelector('.steps-container');
+            const progressBar = document.querySelector('.steps-progress');
+            const steps = document.querySelectorAll('.step');
+            
+            if(stepsSection && progressBar) {
+                const stepObserver = new IntersectionObserver((entries) => {
+                    if(entries[0].isIntersecting) {
+                        // Animate line
+                        progressBar.style.width = '100%';
+                        
+                        // Activate steps sequentially
+                        steps.forEach((step, index) => {
+                            setTimeout(() => {
+                                step.classList.add('active');
+                            }, (index + 1) * 500); // 500ms, 1000ms, 1500ms
+                        });
+                        
+                        stepObserver.unobserve(stepsSection);
+                    }
+                }, { threshold: 0.5 });
+                
+                stepObserver.observe(stepsSection);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedanco | Secure Login</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0A0A0A;
+            --bg-card: #141414;
+            --accent: #FF6B00;
+            --accent-hover: #E66000;
+            --text-main: #FFFFFF;
+            --text-muted: #8E8E93;
+            --border-color: #2A2A2A;
+            --error: #FF3B30;
+            --input-bg: #050505;
+            
+            --font-head: 'Syne', sans-serif;
+            --font-body: 'Barlow', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .split-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- LEFT PANEL --- */
+        .left-panel {
+            flex: 1;
+            background-color: var(--bg-dark);
+            position: relative;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .brand-logo {
+            font-family: var(--font-head);
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            z-index: 10;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .brand-logo span { color: var(--accent); }
+
+        .left-content {
+            z-index: 10;
+            margin-top: 40px;
+        }
+
+        .tagline {
+            font-family: var(--font-head);
+            font-size: 64px;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .map-illustration {
+            position: relative;
+            height: 250px;
+            margin-bottom: 50px;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 0, 0.15));
+        }
+
+        .svg-map {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-family: var(--font-head);
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .badge i { color: var(--accent); font-size: 16px; }
+
+        .bg-animation {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255, 107, 0, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+            top: 40%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        /* --- RIGHT PANEL --- */
+        .right-panel {
+            width: 550px;
+            background-color: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.6);
+            z-index: 5;
+            position: relative;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .mobile-logo {
+            display: none;
+            font-family: var(--font-head);
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .mobile-logo span { color: var(--accent); }
+
+        .form-header { margin-bottom: 35px; }
+        .form-header h2 {
+            font-family: var(--font-head);
+            font-size: 32px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .form-header p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            position: relative;
+            margin-bottom: 35px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 0;
+            font-family: var(--font-head);
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .tab-btn.active { color: var(--text-main); }
+        .tab-indicator {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--accent);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Form Groups */
+        .input-group { margin-bottom: 24px; position: relative; }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-wrapper input {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px 45px;
+            color: #fff;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        .input-wrapper input::placeholder {
+            color: #4A4A4A;
+        }
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1);
+        }
+        .input-wrapper i.icon-left {
+            position: absolute;
+            left: 16px;
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .input-wrapper i.icon-right {
+            position: absolute;
+            right: 16px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+        .input-wrapper i.icon-right:hover { color: #fff; }
+        .input-wrapper input:focus ~ i.icon-left { color: var(--accent); }
+
+        /* Error Styles */
+        .error-msg {
+            color: var(--error);
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+            position: absolute;
+        }
+        .input-group.error input { border-color: var(--error); }
+        .input-group.error i.icon-left { color: var(--error); }
+        .input-group.error .error-msg { display: block; }
+
+        /* Links */
+        .forgot-link {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+        .forgot-link a {
+            color: var(--accent);
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        .forgot-link a:hover { opacity: 0.8; }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: var(--font-head);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, #D65A00 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.25);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--border-color);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(255, 107, 0, 0.05);
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 25px 0;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-family: var(--font-head);
+            font-weight: 600;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .divider span { padding: 0 15px; }
+
+        /* Signup */
+        .signup-link {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+        .signup-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .left-panel { padding: 40px; }
+            .tagline { font-size: 48px; }
+        }
+
+        @media (max-width: 900px) {
+            .left-panel { display: none; }
+            .right-panel { width: 100%; justify-content: center; padding: 24px; box-shadow: none; }
+            body { background-color: var(--bg-card); overflow-y: auto; }
+            .form-container { max-width: 450px; margin: 40px 0; }
+            .mobile-logo { display: flex; justify-content: center; }
+            .split-container { overflow-y: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-container">
+        <!-- --- LEFT PANEL --- -->
+        <div class="left-panel">
+            <div class="glow-sphere"></div>
+            <div class="bg-animation"></div>
+            
+            <div class="brand-logo">
+                <i class="fa-solid fa-truck-fast"></i> VEDAN<span>CO</span>
+            </div>
+            
+            <div class="left-content">
+                <h1 class="tagline">Your Freight.<br>Our Priority.</h1>
+                
+                <div class="map-illustration">
+                    <svg class="svg-map" viewBox="0 0 500 250" preserveAspectRatio="xMidYMid meet">
+                        <!-- Connecting Grid Base -->
+                        <path d="M 0 50 L 500 50 M 0 100 L 500 100 M 0 150 L 500 150 M 0 200 L 500 200" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                        <path d="M 50 0 L 50 250 M 150 0 L 150 250 M 250 0 L 250 250 M 350 0 L 350 250 M 450 0 L 450 250" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                        
+                        <!-- Dynamic Routes -->
+                        <!-- Primary Route (Orange) -->
+                        <path id="routeA" d="M 50 200 C 150 200, 150 50, 250 100 S 350 200, 450 100" fill="none" stroke="rgba(255, 107, 0, 0.4)" stroke-width="3" stroke-dasharray="6 6" />
+                        <!-- Secondary Route (White muted) -->
+                        <path id="routeB" d="M 50 100 Q 200 150 250 200 T 450 50" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" />
+                        
+                        <!-- Moving Glowing Dots -->
+                        <circle r="6" fill="#FF6B00" style="filter: drop-shadow(0 0 8px #FF6B00);">
+                            <animateMotion dur="6s" repeatCount="indefinite">
+                                <mpath href="#routeA" />
+                            </animateMotion>
+                        </circle>
+                        <circle r="4" fill="#FFFFFF" style="filter: drop-shadow(0 0 5px #FFFFFF);">
+                            <animateMotion dur="8s" repeatCount="indefinite" begin="2s">
+                                <mpath href="#routeB" />
+                            </animateMotion>
+                        </circle>
+                        
+                        <!-- Static Nodes / Checkpoints -->
+                        <circle cx="50" cy="200" r="8" fill="#0A0A0A" stroke="#FF6B00" stroke-width="2" />
+                        <circle cx="250" cy="100" r="8" fill="#0A0A0A" stroke="#FF6B00" stroke-width="2" />
+                        <circle cx="450" cy="100" r="8" fill="#0A0A0A" stroke="#FF6B00" stroke-width="2" />
+                        
+                        <circle cx="50" cy="100" r="5" fill="#0A0A0A" stroke="#FFFFFF" stroke-width="2" />
+                        <circle cx="250" cy="200" r="5" fill="#0A0A0A" stroke="#FFFFFF" stroke-width="2" />
+                        <circle cx="450" cy="50" r="5" fill="#0A0A0A" stroke="#FFFFFF" stroke-width="2" />
+                    </svg>
+                </div>
+                
+                <div class="trust-badges">
+                    <div class="badge"><i class="fa-solid fa-box-check"></i> 10K+ Deliveries</div>
+                    <div class="badge"><i class="fa-solid fa-city"></i> 50+ Cities</div>
+                    <div class="badge"><i class="fa-solid fa-clock-rotate-left"></i> 98% On-Time</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- --- RIGHT PANEL --- -->
+        <div class="right-panel">
+            <div class="form-container">
+                <!-- Mobile Only Logo -->
+                <div class="mobile-logo">
+                    <i class="fa-solid fa-truck-fast" style="margin-right: 10px;"></i> VEDAN<span>CO</span>
+                </div>
+
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Login to your Vedanco account</p>
+                </div>
+                
+                <!-- Role Tabs -->
+                <div class="tabs">
+                    <button type="button" class="tab-btn active" onclick="switchTab('customer')">Customer</button>
+                    <button type="button" class="tab-btn" onclick="switchTab('partner')">Driver/Partner</button>
+                    <div class="tab-indicator"></div>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" novalidate onsubmit="handleLogin(event)">
+                    <div class="input-group" id="emailGroup">
+                        <label for="email">Mobile Number or Email</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user icon-left"></i>
+                            <input type="text" id="email" placeholder="Enter mobile or email">
+                        </div>
+                        <span class="error-msg">This field is required</span>
+                    </div>
+                    
+                    <div class="input-group" id="passwordGroup">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock icon-left"></i>
+                            <input type="password" id="password" placeholder="Enter password">
+                            <i class="fa-regular fa-eye icon-right" onclick="togglePassword()" title="Show/Hide Password"></i>
+                        </div>
+                        <span class="error-msg">This field is required</span>
+                    </div>
+                    
+                    <div class="forgot-link">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="loginBtn">
+                        Sign In <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline">
+                        <i class="fa-solid fa-mobile-screen"></i> Login with OTP
+                    </button>
+                    
+                    <p class="signup-link">Don't have an account? <a href="#">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tab) {
+            const btns = document.querySelectorAll('.tab-btn');
+            const indicator = document.querySelector('.tab-indicator');
+            
+            if(tab === 'customer') {
+                btns[0].classList.add('active');
+                btns[1].classList.remove('active');
+                indicator.style.transform = 'translateX(0)';
+            } else {
+                btns[0].classList.remove('active');
+                btns[1].classList.add('active');
+                indicator.style.transform = 'translateX(100%)';
+            }
+        }
+
+        // Toggle Password Visibility
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.querySelector('.icon-right');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Form Validation & Submission Mock
+        function handleLogin(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            
+            const emailGroup = document.getElementById('emailGroup');
+            const passwordGroup = document.getElementById('passwordGroup');
+            
+            let isValid = true;
+            
+            // Validate Email/Mobile
+            if (!emailInput.value.trim()) {
+                emailGroup.classList.add('error');
+                isValid = false;
+            } else {
+                emailGroup.classList.remove('error');
+            }
+            
+            // Validate Password
+            if (!passwordInput.value.trim()) {
+                passwordGroup.classList.add('error');
+                isValid = false;
+            } else {
+                passwordGroup.classList.remove('error');
+            }
+            
+            // Mock Login Process
+            if (isValid) {
+                const btn = document.getElementById('loginBtn');
+                const originalContent = btn.innerHTML;
+                
+                // Loading State
+                btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...';
+                btn.style.opacity = '0.8';
+                btn.disabled = true;
+                
+                // Simulate network request
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Success';
+                    btn.style.background = '#28a745';
+                    btn.style.boxShadow = '0 6px 20px rgba(40, 167, 69, 0.4)';
+                    
+                    // Reset back (mock)
+                    setTimeout(() => {
+                        btn.innerHTML = originalContent;
+                        btn.style.background = '';
+                        btn.style.boxShadow = '';
+                        btn.style.opacity = '1';
+                        btn.disabled = false;
+                    }, 2000);
+                }, 1500);
+            }
+        }
+
+        // Clear error styling on user input
+        document.getElementById('email').addEventListener('input', function() {
+            document.getElementById('emailGroup').classList.remove('error');
+        });
+        document.getElementById('password').addEventListener('input', function() {
+            document.getElementById('passwordGroup').classList.remove('error');
+        });
+    </script>
+</body>
+</html>
