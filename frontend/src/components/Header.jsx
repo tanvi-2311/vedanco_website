@@ -4,6 +4,8 @@ import Logo from './Logo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSubMenu, setActiveSubMenu] = useState(null); // 'businesses' or 'sustainability'
+  
   const [susPreview, setSusPreview] = useState({
     title: 'Powering a Sustainable Future',
     desc: 'Vedanco integrates recycling, renewable energy, and carbon strategies to drive long-term environmental and economic impact.',
@@ -12,10 +14,19 @@ const Header = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    setActiveSubMenu(null);
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setActiveSubMenu(null);
+  };
+
+  const toggleSubMenu = (e, name) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      setActiveSubMenu(activeSubMenu === name ? null : name);
+    }
   };
 
   const susItems = {
@@ -69,8 +80,11 @@ const Header = () => {
             <nav className={isMenuOpen ? 'active' : ''}>
               <ul>
                 <li onClick={closeMenu}><Link to="/about">About Us</Link></li>
-                <li className="has-mega">
-                  <Link to="/businesses">Businesses <i className="fas fa-chevron-down"></i></Link>
+                
+                <li className={`has-mega ${activeSubMenu === 'businesses' ? 'mobile-open' : ''}`}>
+                  <Link to="/businesses" onClick={(e) => toggleSubMenu(e, 'businesses')}>
+                    Businesses <i className="fas fa-chevron-down"></i>
+                  </Link>
                   <div className="mega-menu">
                     <div className="container">
                       <div className="mega-grid">
@@ -120,67 +134,36 @@ const Header = () => {
                           </ul>
                         </div>
                       </div>
-                      <div className="mega-footer">
-                        <p>Vedanco Group is a culture that encourages thinking big and taking risks. It's a can-do attitude that has been propelling us towards success across sectors. <a href="#">Read More</a></p>
-                      </div>
                     </div>
                   </div>
                 </li>
-                <li className="has-mega">
-                  <Link to="/sustainability" onMouseEnter={resetSusHover}>Sustainability <i className="fas fa-chevron-down"></i></Link>
+
+                <li className={`has-mega ${activeSubMenu === 'sustainability' ? 'mobile-open' : ''}`}>
+                  <Link to="/sustainability" onClick={(e) => toggleSubMenu(e, 'sustainability')} onMouseEnter={resetSusHover}>
+                    Sustainability <i className="fas fa-chevron-down"></i>
+                  </Link>
                   <div className="mega-menu mega-sustainability">
                     <div className="container">
                       <div className="mega-grid-v2">
                         <div className="mega-col-v2">
-                          <div className="col-header">
-                            <i className="fas fa-recycle icon-accent"></i>
-                            <div>
-                              <h5>Recycling & Circular Economy</h5>
-                              <span className="subtitle">Waste-to-Value Systems</span>
-                            </div>
-                          </div>
+                          <h5>Recycling</h5>
                           <ul>
-                            <li><Link to="/waste-recycling" onClick={closeMenu} onMouseEnter={() => handleSusHover('Advanced Waste Recycling')}>Advanced Waste Recycling</Link></li>
-                            <li><Link to="/waste-recycling" onClick={closeMenu} onMouseEnter={() => handleSusHover('Plastic Waste Processing')}>Plastic Waste Processing</Link></li>
-                            <li><Link to="/waste-recycling" onClick={closeMenu} onMouseEnter={() => handleSusHover('Granule Production')}>Granule Production</Link></li>
-                            <li><Link to="/waste-recycling" onClick={closeMenu} onMouseEnter={() => handleSusHover('Circular Economy Solutions')}>Circular Economy Solutions</Link></li>
+                            <li><Link to="/waste-recycling" onClick={closeMenu}>Advanced Waste Recycling</Link></li>
+                            <li><Link to="/waste-recycling" onClick={closeMenu}>Plastic Processing</Link></li>
                           </ul>
                         </div>
                         <div className="mega-col-v2">
-                          <div className="col-header">
-                            <i className="fas fa-bolt icon-accent"></i>
-                            <div>
-                              <h5>Renewable Energy</h5>
-                              <span className="subtitle">Sustainable Power Solutions</span>
-                            </div>
-                          </div>
+                          <h5>Energy</h5>
                           <ul>
-                            <li><Link to="/solar-energy" onClick={closeMenu} onMouseEnter={() => handleSusHover('Solar Energy Projects')}>Solar Energy Projects</Link></li>
-                            <li><Link to="/wind-power" onClick={closeMenu} onMouseEnter={() => handleSusHover('Renewable Energy Systems')}>Renewable Energy Systems</Link></li>
-                            <li><Link to="/carbon-credits" onClick={closeMenu} onMouseEnter={() => handleSusHover('Clean Energy Infrastructure')}>Clean Energy Infrastructure</Link></li>
+                            <li><Link to="/solar-energy" onClick={closeMenu}>Solar Projects</Link></li>
+                            <li><Link to="/wind-power" onClick={closeMenu}>Wind Power</Link></li>
                           </ul>
                         </div>
-                        <div className="mega-col-v2">
-                          <div className="col-header">
-                            <i className="fas fa-leaf icon-accent"></i>
-                            <div>
-                              <h5>Carbon & Climate Strategy</h5>
-                              <span className="subtitle">Emission Reduction & Green Growth</span>
-                            </div>
-                          </div>
-                          <ul>
-                            <li><Link to="/carbon-credits" onClick={closeMenu} onMouseEnter={() => handleSusHover('Carbon Credit Trading')}>Carbon Credit Trading</Link></li>
-                            <li><Link to="/carbon-credits" onClick={closeMenu} onMouseEnter={() => handleSusHover('Emission Management')}>Emission Management</Link></li>
-                            <li><Link to="/sustainability" onClick={closeMenu} onMouseEnter={() => handleSusHover('Sustainability Compliance')}>Sustainability Compliance</Link></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="mega-footer-v2">
-                        <span className="trust-line">“Driving Sustainable Growth Across Industries”</span>
                       </div>
                     </div>
                   </div>
                 </li>
+
                 <li onClick={closeMenu}><Link to="/foundation">Vedanco Foundation</Link></li>
                 <li onClick={closeMenu}><Link to="/investors">Investors</Link></li>
                 <li onClick={closeMenu}><Link to="/services">Services</Link></li>
