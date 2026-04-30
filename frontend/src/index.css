@@ -36,11 +36,11 @@
         right: -100% !important;
         width: 100% !important;
         height: 100vh !important;
-        background: var(--primary-green) !important;
+        background: #0d2b1a !important; /* Solid Dark Green */
         z-index: 2000 !important;
         transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
         padding-top: 80px !important;
-        overflow-y: auto !important; /* Enable scrolling for long menus */
+        overflow-y: auto !important;
     }
     
     nav.active { right: 0 !important; }
@@ -48,30 +48,37 @@
     nav ul { 
         display: flex !important;
         flex-direction: column !important; 
-        align-items: center !important; 
+        align-items: flex-start !important; /* Align to left for better reading */
         justify-content: flex-start !important;
-        gap: 15px !important; 
+        gap: 0 !important; 
         width: 100% !important;
         height: auto !important;
-        padding-bottom: 50px !important;
+        padding: 0 20px 50px !important;
     }
     
-    nav ul li { width: 100% !important; }
+    nav ul li { 
+        width: 100% !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
     
     nav ul li a { 
         color: #ffffff !important; 
-        font-size: 1.3rem !important; 
-        padding: 15px !important;
+        font-size: 1.2rem !important; 
+        font-weight: 500 !important;
+        padding: 20px 10px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
     }
 
     /* Mobile Accordion Logic */
     .mega-menu { 
         display: none !important; 
-        background: rgba(255,255,255,0.05) !important;
+        background: #0a2114 !important; /* Even Darker for sub-menu */
         width: 100% !important;
         position: static !important;
         box-shadow: none !important;
-        padding: 0 !important;
+        padding: 10px 0 !important;
     }
 
     .mobile-open .mega-menu { 
@@ -81,22 +88,24 @@
     .mega-grid, .mega-grid-v2 { 
         display: flex !important; 
         flex-direction: column !important;
-        padding: 10px 20px !important;
-        gap: 15px !important;
+        padding: 0 20px 20px !important;
+        gap: 20px !important;
     }
 
     .mega-col h5, .mega-col-v2 h5 {
         color: var(--accent-gold) !important;
-        font-size: 1rem !important;
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
         margin-bottom: 10px !important;
-        text-align: left !important;
+        opacity: 0.9 !important;
     }
 
     .mega-col ul li a, .mega-col-v2 ul li a {
-        font-size: 0.95rem !important;
-        padding: 5px 0 !important;
-        color: rgba(255,255,255,0.8) !important;
-        text-align: left !important;
+        font-size: 1rem !important;
+        padding: 8px 0 !important;
+        color: rgba(255,255,255,0.7) !important;
+        border: none !important;
     }
 
     .mega-footer, .mega-footer-v2, .mega-feature-panel { display: none !important; }
