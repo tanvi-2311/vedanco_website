@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
+/* Mobile Fixes */
+@media (max-width: 768px) {
+    html, body { overflow-x: hidden; width: 100%; position: relative; }
+    .container { padding: 0 15px; width: 100%; max-width: 100vw; }
+    .hero { height: auto; min-height: 80vh; padding: 60px 0; }
+    .hero-content h1 { font-size: 2rem !important; text-align: center; }
+    .hero-slider-wrapper { position: static; width: 100%; margin-top: 20px; }
+    .about-grid-full { flex-direction: column; width: 100%; }
+    .chairman-container, .about-text { min-width: 100% !important; width: 100%; }
+    .about-text { padding: 30px 15px; }
+    nav { display: none; }
+}
+
 /* Design System */
 :root {
     --primary-green: #1a4d2e;
