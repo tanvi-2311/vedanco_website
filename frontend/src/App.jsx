@@ -39,6 +39,7 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Investors from './pages/Investors';
 import HireCoders from './pages/HireCoders';
+import ITAgency from './pages/ITAgency';
 
 import './index.css'; // Global styles
 
@@ -140,6 +141,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/investors" element={<Investors />} />
         <Route path="/hire-coders" element={<HireCoders />} />
+        <Route path="/it-agency" element={<ITAgency />} />
 
         {/* .html Redirects for backward compatibility */}
         <Route path="/index.html" element={<Navigate to="/" replace />} />

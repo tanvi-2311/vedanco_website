@@ -382,8 +382,8 @@ const Home = () => {
       {/* 1. PROBLEM STATEMENT SECTION */}
       <section className="investor-intro reveal" id="problem" style={{ background: '#fff', padding: '100px 0' }}>
         <div className="container">
-          <div className="intro-card" style={{ borderLeft: '6px solid #e53935' }}>
-            <span className="tag" style={{ background: '#ffebee', color: '#e53935', padding: '5px 15px', borderRadius: '4px', fontWeight: '700', fontSize: '0.8rem', textTransform: 'uppercase' }}>Challenges</span>
+          <div className="intro-card" style={{ borderLeft: '6px solid var(--primary-green)' }}>
+            <span className="tag" style={{ background: 'rgba(46, 125, 50, 0.1)', color: 'var(--primary-green)', padding: '5px 15px', borderRadius: '4px', fontWeight: '700', fontSize: '0.8rem', textTransform: 'uppercase' }}>Challenges</span>
             <h2 style={{ fontSize: '2.8rem', margin: '20px 0', fontWeight: '800' }}>Challenges in Modern Industries</h2>
             <div className="biz-domains" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '30px' }}>
               {[
@@ -394,7 +394,7 @@ const Home = () => {
                 { icon: 'fa-robot', text: 'Lack of Digital Systems & Automation' }
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '20px', background: '#fcfcfc', borderRadius: '12px', border: '1px solid #eee' }}>
-                  <i className={`fas ${item.icon}`} style={{ fontSize: '1.5rem', color: '#e53935' }}></i>
+                  <i className={`fas ${item.icon}`} style={{ fontSize: '1.5rem', color: 'var(--primary-green)' }}></i>
                   <span style={{ fontWeight: '600', color: '#444' }}>{item.text}</span>
                 </div>
               ))}
@@ -432,29 +432,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. MARKET OPPORTUNITY SECTION */}
-      <section className="market-section reveal" id="market" style={{ padding: '100px 0' }}>
-        <div className="container">
-          <h2 className="section-title text-center" style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '60px' }}>Market Opportunity</h2>
-          <div className="market-grid">
-            <div className="market-card">
-              <i className="fas fa-globe-americas" style={{ fontSize: '2.5rem', color: 'var(--primary-green)', marginBottom: '20px' }}></i>
-              <h3>$20+ Trillion</h3>
-              <p>Global Trade Market</p>
-            </div>
-            <div className="market-card highlight">
-              <i className="fas fa-truck-moving" style={{ fontSize: '2.5rem', color: '#fff', marginBottom: '20px' }}></i>
-              <h3>₹10+ Lakh Crore</h3>
-              <p>India Logistics Industry</p>
-            </div>
-            <div className="market-card">
-              <i className="fas fa-chart-line" style={{ fontSize: '2.5rem', color: 'var(--primary-green)', marginBottom: '20px' }}></i>
-              <h3>Massive & Growing</h3>
-              <p>Target markets include India, Middle East, and Africa, offering large-scale expansion opportunities.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* 3.1 VEDANCO IN NUMBERS (Adani Style Impact) */}
       <section className="stats-section reveal" style={{ padding: '80px 0', background: '#0d2b1a', color: '#fff' }}>
