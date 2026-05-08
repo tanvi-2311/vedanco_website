@@ -38,6 +38,7 @@ import Sustainability from './pages/Sustainability';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Investors from './pages/Investors';
+import HireCoders from './pages/HireCoders';
 
 import './index.css'; // Global styles
 
@@ -138,6 +139,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/investors" element={<Investors />} />
+        <Route path="/hire-coders" element={<HireCoders />} />
 
         {/* .html Redirects for backward compatibility */}
         <Route path="/index.html" element={<Navigate to="/" replace />} />

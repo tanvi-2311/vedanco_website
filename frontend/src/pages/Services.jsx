@@ -98,7 +98,7 @@ const Services = () => {
     return (
         <main className="services-page">
             <section className="page-banner services-hero" style={{ 
-                backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/grid_office.png')",
+                backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/corporate_meeting_real.png?v=1')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>

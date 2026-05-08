@@ -38,7 +38,7 @@ Message: ${formData.message}`;
     return (
         <main className="contact-page">
             <section className="page-banner contact-hero" style={{
-                backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/hero_office.png')",
+                backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/corporate_meeting_real.png?v=1')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>

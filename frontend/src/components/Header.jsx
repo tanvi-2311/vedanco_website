@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 
 const Header = () => {
@@ -167,6 +167,7 @@ const Header = () => {
                 <li onClick={closeMenu}><Link to="/foundation">Vedanco Foundation</Link></li>
                 <li onClick={closeMenu}><Link to="/investors">Investors</Link></li>
                 <li onClick={closeMenu}><Link to="/services">Services</Link></li>
+                <li onClick={closeMenu}><Link to="/hire-coders">Hire Coders</Link></li>
                 <li onClick={closeMenu}><Link to="/contact">Contact Us</Link></li>
               </ul>
             </nav>

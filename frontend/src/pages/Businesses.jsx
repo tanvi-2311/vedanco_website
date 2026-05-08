@@ -6,7 +6,7 @@ const businessesData = [
     {
         id: 'import-export',
         name: 'Import–Export',
-        image: 'assets/images/hero.png',
+        image: '/assets/images/global_port_real.png?v=1',
         description: 'Global trading facilitators bridging international markets with precision cargo solutions and strategic partnership networks.',
         path: '/import-export',
         tags: ['Global Trade', 'Strategic Sourcing', 'Market Access']
@@ -14,7 +14,7 @@ const businessesData = [
     {
         id: 'logistics',
         name: 'Logistics',
-        image: 'assets/images/pill_logistics.png',
+        image: '/assets/images/warehouse_hub_real.png?v=1',
         description: 'End-to-end supply chain management with advanced warehousing, multimodal transport, and real-time distribution tracking.',
         path: '/logistics',
         tags: ['Warehousing', 'Distribution', 'Supply Chain']
@@ -22,7 +22,7 @@ const businessesData = [
     {
         id: 'manpower',
         name: 'Manpower',
-        image: 'assets/images/join1.png',
+        image: '/assets/images/corporate_meeting_real.png?v=1',
         description: 'Providing skilled human capital and specialized staffing solutions for global organizations across diverse industry sectors.',
         path: '/manpower',
         tags: ['Staffing', 'Human Capital', 'Recruitment']
@@ -30,7 +30,7 @@ const businessesData = [
     {
         id: 'interior-design',
         name: 'Interior Design',
-        image: 'assets/images/grid_office.png',
+        image: '/assets/images/grid_office.png',
         description: 'Creating workspaces that inspire productivity and innovative architectural environments tailored to corporate excellence.',
         path: '/interior-design',
         tags: ['Architecture', 'Workspace', 'Modern Design']
@@ -62,7 +62,7 @@ const businessesData = [
     {
         id: 'energy',
         name: 'Energy & Carbon Credits',
-        image: '/assets/images/grid_solar.png',
+        image: '/assets/images/solar_farm_real.png?v=1',
         description: 'Powering tomorrow with clean renewable energy and global carbon asset management to achieve net-zero milestones.',
         path: '/energy',
         tags: ['Renewables', 'Solar', 'Carbon Markets']
@@ -99,7 +99,7 @@ const Businesses = () => {
 
     return (
         <main>
-            <section className="page-banner" style={{ backgroundImage: "url('/assets/images/hero.png')" }}>
+            <section className="page-banner" style={{ backgroundImage: "url('/assets/images/global_port_real.png?v=1')" }}>
                 <div className="container banner-inner">
                     <div className="banner-content-bottom">
                         <h1>Businesses</h1>

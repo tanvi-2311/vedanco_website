@@ -1,27 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// Import images directly from the Gemini artifact storage
+import bg1 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/vedanco_office_bg_1777872086352.png';
+import thumb1 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/media__1777872319531.png';
+import bg2 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/hero_logistics_highway_realistic_1777868117672.png';
+import bg4 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/sustainability_solar_farm_realistic_1777868183893.png';
+import bg5 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/corporate_office_meeting_realistic_1777868169887.png';
+
 const Home = () => {
 
   const [isExpanded, setIsExpanded] = useState(true); // Default to expanded for now as in the user's view
   const [isProfileExpanded, setIsProfileExpanded] = useState(false);
 
   const heroSlides = [
-    { bg: '/assets/images/hero_office.png', title: 'Building Infrastructure for a New Era.', pill: '/assets/images/pill_port.png', label: 'Ports' },
+    { bg: bg1, title: 'Building Infrastructure for a New Era.', pill: thumb1, label: 'Vedanco' },
     { 
-      bg: '/assets/images/transport_hero.png', 
-      video: 'https://videos.pexels.com/video-files/4440958/4440958-uhd_2560_1440_30fps.mp4',
+      bg: bg2, 
       title: 'Global Logistics Redefined.', 
-      pill: '/assets/images/pill_logistics.png', 
+      pill: bg2, 
       label: 'Logistics' 
     },
     { bg: '/assets/images/smart_terminals_hero.png', title: 'Future-Ready Aviation Hubs.', pill: '/assets/images/smart_terminals_hero.png', label: 'Airports' },
-    { bg: '/assets/images/grid_solar.png', title: 'Efficient Sustainable Energy Solutions.', pill: '/assets/images/pill_logistics.png', label: 'Energy' },
-    { bg: '/assets/images/join1.png', title: 'Empowering Growth Across Sectors.', pill: '/assets/images/join1.png', label: 'People' }
+    { bg: bg4, title: 'Efficient Sustainable Energy Solutions.', pill: bg4, label: 'Energy' },
+    { bg: bg5, title: 'Empowering Growth Across Sectors.', pill: bg5, label: 'People' }
   ];
 
   const [activeHero, setActiveHero] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const heroOpacity = Math.max(1 - scrollY / 600, 0);
+  const heroTranslate = scrollY * 0.4;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -72,8 +90,8 @@ const Home = () => {
       id: 'import-export',
       title: 'Import–Export',
       path: '/import-export',
-      featureImg: '/assets/images/hero.png',
-      tileImg: '/assets/images/hero.png',
+      featureImg: '/assets/images/global_port_real.png?v=1',
+      tileImg: '/assets/images/global_port_real.png?v=1',
       subnav: ['Shipping', 'Cargo', 'Global Hub', 'Customs'],
       desc: 'Global sourcing and bulk trading of commodities including coal, scrap, textiles, and industrial materials.'
     },
@@ -81,8 +99,8 @@ const Home = () => {
       id: 'logistics',
       title: 'Logistics',
       path: '/logistics',
-      featureImg: '/assets/images/pill_logistics.png',
-      tileImg: '/assets/images/hero.png',
+      featureImg: '/assets/images/warehouse_hub_real.png?v=1',
+      tileImg: '/assets/images/hero_highway_real.png?v=1',
       subnav: ['Warehousing', 'Transport', 'Last Mile', 'Supply Chain'],
       desc: 'Efficient transport network, freight forwarding, and delivery systems ensuring cost optimization and smooth supply chain operations.'
     },
@@ -90,8 +108,8 @@ const Home = () => {
       id: 'manpower',
       title: 'Manpower',
       path: '/manpower',
-      featureImg: '/assets/images/join1.png',
-      tileImg: '/assets/images/join1.png',
+      featureImg: '/assets/images/corporate_meeting_real.png?v=1',
+      tileImg: '/assets/images/corporate_meeting_real.png?v=1',
       subnav: ['Staffing', 'Training', 'Recruitment', 'HR Outsourcing'],
       desc: 'Skilled and unskilled workforce solutions for industrial and technical requirements across domestic and international markets.'
     },
@@ -135,8 +153,8 @@ const Home = () => {
       id: 'energy',
       title: 'Energy & Carbon Credit',
       path: '/energy',
-      featureImg: '/assets/images/grid_solar.png',
-      tileImg: '/assets/images/grid_solar.png',
+      featureImg: '/assets/images/solar_farm_real.png?v=1',
+      tileImg: '/assets/images/solar_farm_real.png?v=1',
       subnav: ['Carbon Credit', 'Solar', 'Wind', 'Green Hydrogen'],
       desc: 'Sustainable energy solutions and carbon credit management for a greener future.'
     }
@@ -150,7 +168,11 @@ const Home = () => {
       <section className="hero">
         <div 
           className="hero-image-bg" 
-          style={{ backgroundImage: `url(${heroSlides[activeHero].bg})` }}
+          style={{ 
+            backgroundImage: `url(${heroSlides[activeHero].bg})`,
+            opacity: heroOpacity,
+            transform: `translateY(${heroTranslate * 0.5}px)`
+          }}
         ></div>
         
         {heroSlides[activeHero].video && (
@@ -162,14 +184,21 @@ const Home = () => {
             playsInline 
             poster={heroSlides[activeHero].bg}
             className="hero-video-bg"
+            style={{ 
+              opacity: heroOpacity,
+              transform: `translateY(${heroTranslate * 0.5}px)`
+            }}
           >
             <source src={heroSlides[activeHero].video} type="video/mp4" />
           </video>
         )}
         
-        <div className="hero-overlay"></div>
+        <div className="hero-overlay" style={{ opacity: heroOpacity }}></div>
         <div className="container hero-flex-container">
-          <div className={`hero-content ${isTransitioning ? 'exit' : 'enter'}`}>
+          <div 
+            className={`hero-content ${isTransitioning ? 'exit' : 'enter'}`}
+            style={{ opacity: heroOpacity, transform: `translateY(${heroTranslate}px)` }}
+          >
             <span className="hero-category-tag">VEDANCO GROUP</span>
             <h1>Building a Global Supply Chain,<br />Technology & Infrastructure Ecosystem</h1>
             <p className="hero-description" style={{ fontSize: '1.2rem', margin: '20px 0', opacity: '0.9', maxWidth: '600px', lineHeight: '1.6' }}>
@@ -182,7 +211,10 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="hero-slider-wrapper">
+        <div 
+          className="hero-slider-wrapper"
+          style={{ opacity: heroOpacity, transform: `translateY(${heroTranslate}px)` }}
+        >
           <div className={`hero-right-tiles bottom-nav ${isTransitioning ? 'exit' : 'enter'}`}>
               {heroSlides.map((slide, index) => (
                   <div 
@@ -218,30 +250,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Section Full-Width */}
-      <section className="about-section" id="about">
-        <div className="about-grid-full">
-          <div className="chairman-container reveal">
-            <img src="/assets/images/chairman_new.png.jpeg" alt="Chairman Portrait" className="chairman-img" />
-          </div>
-          <div className="about-text">
-            <div className="text-content-wrapper reveal">
-              <h2>About Vedanco Group</h2>
-              <div className={`profile-text-collapsed ${isProfileExpanded ? 'profile-text-expanded' : ''}`} id="profile-text">
-                <p>Vedanco Group is a multi-domain business ecosystem focused on global supply chain, logistics, manpower, technology, and infrastructure.</p>
-                <p>Our mission is to build a unified platform that connects industries, reduces inefficiencies, and enables scalable growth across multiple markets.</p>
-              </div>
-              <button
-                className="btn-profile"
-                id="view-profile-btn"
-                onClick={() => setIsProfileExpanded(!isProfileExpanded)}
-              >
-                {isProfileExpanded ? 'Show Vision' : 'Read More'}
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Businesses Section */}
       <section className="grid-feature-section" id="businesses">
@@ -673,6 +682,31 @@ const Home = () => {
             <a href="javascript:void(0)" className="read-less" onClick={() => setIsExpanded(!isExpanded)}>
               {isExpanded ? 'Read Less' : 'Read More'}
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section Full-Width */}
+      <section className="about-section" id="about">
+        <div className="about-grid-full">
+          <div className="chairman-container reveal">
+            <img src="/assets/images/chairman_new.png.jpeg" alt="Chairman Portrait" className="chairman-img" />
+          </div>
+          <div className="about-text">
+            <div className="text-content-wrapper reveal">
+              <h2>About Vedanco Group</h2>
+              <div className={`profile-text-collapsed ${isProfileExpanded ? 'profile-text-expanded' : ''}`} id="profile-text">
+                <p>Vedanco Group is a multi-domain business ecosystem focused on global supply chain, logistics, manpower, technology, and infrastructure.</p>
+                <p>Our mission is to build a unified platform that connects industries, reduces inefficiencies, and enables scalable growth across multiple markets.</p>
+              </div>
+              <button
+                className="btn-profile"
+                id="view-profile-btn"
+                onClick={() => setIsProfileExpanded(!isProfileExpanded)}
+              >
+                {isProfileExpanded ? 'Show Vision' : 'Read More'}
+              </button>
+            </div>
           </div>
         </div>
       </section>
