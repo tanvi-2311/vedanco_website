@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// Import images directly from the Gemini artifact storage
-import bg1 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/vedanco_office_bg_1777872086352.png';
-import thumb1 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/media__1777872319531.png';
-import bg2 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/hero_logistics_highway_realistic_1777868117672.png';
-import bg4 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/sustainability_solar_farm_realistic_1777868183893.png';
-import bg5 from '/@fs/C:/Users/hp140/.gemini/antigravity/brain/5c2b1b8f-c1f3-4397-b369-b45fd5598da3/corporate_office_meeting_realistic_1777868169887.png';
 
 const Home = () => {
 
@@ -14,16 +8,16 @@ const Home = () => {
   const [isProfileExpanded, setIsProfileExpanded] = useState(false);
 
   const heroSlides = [
-    { bg: bg1, title: 'Building Infrastructure for a New Era.', pill: thumb1, label: 'Vedanco' },
+    { bg: '/assets/images/hero_office.png', title: 'Building Infrastructure for a New Era.', pill: '/assets/images/hero_office.png', label: 'Vedanco' },
     { 
-      bg: bg2, 
+      bg: '/assets/images/hero_highway_real.png', 
       title: 'Global Logistics Redefined.', 
-      pill: bg2, 
+      pill: '/assets/images/hero_highway_real.png', 
       label: 'Logistics' 
     },
     { bg: '/assets/images/smart_terminals_hero.png', title: 'Future-Ready Aviation Hubs.', pill: '/assets/images/smart_terminals_hero.png', label: 'Airports' },
-    { bg: bg4, title: 'Efficient Sustainable Energy Solutions.', pill: bg4, label: 'Energy' },
-    { bg: bg5, title: 'Empowering Growth Across Sectors.', pill: bg5, label: 'People' }
+    { bg: '/assets/images/solar_farm_real.png', title: 'Efficient Sustainable Energy Solutions.', pill: '/assets/images/solar_farm_real.png', label: 'Energy' },
+    { bg: '/assets/images/corporate_meeting_real.png', title: 'Empowering Growth Across Sectors.', pill: '/assets/images/corporate_meeting_real.png', label: 'People' }
   ];
 
   const [activeHero, setActiveHero] = useState(0);
