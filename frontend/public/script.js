@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sticky Header Scroll Effect
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-            header.style.padding = '5px 0';
-        } else {
-            header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-            header.style.padding = '15px 0';
+        if (header) {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                header.style.padding = '5px 0';
+            } else {
+                header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                header.style.padding = '15px 0';
+            }
         }
     });
 
@@ -45,70 +47,76 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // Hero Business Slider Logic
+    // Hero Business Slider Logic - Only initialize if elements are present on current page
     const slider = document.querySelector('.hero-slider');
     const pills = document.querySelectorAll('.slide-pill');
     const dotsContainer = document.querySelector('.slider-dots');
     const prevBtn = document.querySelector('.slider-prev');
     const nextBtn = document.querySelector('.slider-next');
-    
-    let currentIndex = 0;
-
-    // Create dots
-    pills.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.dot');
     const heroSection = document.querySelector('.hero');
+    
+    if (slider && pills.length > 0 && dotsContainer && heroSection) {
+        let currentIndex = 0;
 
-    function updateSlider() {
-        const activePill = pills[currentIndex];
-        const newBg = activePill.getAttribute('data-bg');
-        
-        // Update background
-        heroSection.style.backgroundImage = `url('${newBg}')`;
-        
+        // Create dots
+        pills.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlider() {
+            const activePill = pills[currentIndex];
+            if (!activePill) return;
+            const newBg = activePill.getAttribute('data-bg');
+            
+            // Update background
+            heroSection.style.backgroundImage = `url('${newBg}')`;
+            
+            pills.forEach((pill, i) => {
+                pill.classList.toggle('active', i === currentIndex);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+            
+            // Horizontal scroll effect
+            const pillWidth = pills[0].offsetWidth + 15;
+            slider.scrollTo({
+                left: currentIndex * pillWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add click listeners to pills
         pills.forEach((pill, i) => {
-            pill.classList.toggle('active', i === currentIndex);
+            pill.addEventListener('click', () => {
+                currentIndex = i;
+                updateSlider();
+            });
         });
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
-        });
-        
-        // Horizontal scroll effect
-        const pillWidth = pills[0].offsetWidth + 15;
-        slider.scrollTo({
-            left: currentIndex * pillWidth,
-            behavior: 'smooth'
-        });
-    }
 
-    // Add click listeners to pills
-    pills.forEach((pill, i) => {
-        pill.addEventListener('click', () => {
-            currentIndex = i;
+        function goToSlide(index) {
+            currentIndex = index;
             updateSlider();
-        });
-    });
+        }
 
-    function goToSlide(index) {
-        currentIndex = index;
-        updateSlider();
-    }
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % pills.length;
+            updateSlider();
+        }
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % pills.length;
-        updateSlider();
-    }
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + pills.length) % pills.length;
+            updateSlider();
+        }
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + pills.length) % pills.length;
-        updateSlider();
+        // Auto-slide every 5 seconds
+        const sliderInterval = setInterval(nextSlide, 5000);
     }
 
     // Business Grid Interactivity
@@ -148,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mega Menu Navigation Interactivity
     const megaLinks = document.querySelectorAll('a[data-select-biz]');
     
-    if (megaLinks) {
+    if (megaLinks && bizTiles.length > 0) {
         megaLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetBiz = link.getAttribute('data-select-biz');
@@ -166,7 +174,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-    // Auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
 });
