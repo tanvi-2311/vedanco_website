@@ -315,6 +315,7 @@
     margin-bottom: 12px;
     background: var(--gradient-text);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -481,6 +482,7 @@
     margin-bottom: 10px;
     background: var(--gradient-text);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -644,7 +646,25 @@
 }
 
 @media (max-width: 768px) {
-    .it-agency-page .hero h1 { font-size: 2.8rem; }
-    .it-agency-page .hero-btns { flex-direction: column; }
-    .it-agency-page .form-grid { grid-template-columns: 1fr; }
+    .it-agency-page .hero { padding: 100px 0 60px !important; }
+    .it-agency-page .hero h1 { font-size: 2.2rem !important; line-height: 1.15 !important; letter-spacing: -0.5px !important; }
+    .it-agency-page .hero p { font-size: 1rem !important; margin-bottom: 25px !important; }
+    .it-agency-page .hero-btns { flex-direction: column; gap: 12px !important; }
+    .it-agency-page .hero-btns .btn { width: 100% !important; }
+    .it-agency-page h2 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    .it-agency-page .section-header { margin-bottom: 30px !important; }
+    .it-agency-page .section-header p { font-size: 0.95rem !important; }
+    .it-agency-page .services, .it-agency-page .tech, .it-agency-page .portfolio, .it-agency-page .process, .it-agency-page .stats, .it-agency-page .testimonials, .it-agency-page .contact { padding: 60px 0 !important; }
+    .it-agency-page .service-card { padding: 30px 20px !important; }
+    .it-agency-page .service-card h3 { font-size: 1.25rem !important; }
+    .it-agency-page .portfolio-info { padding: 20px !important; }
+    .it-agency-page .portfolio-info h3 { font-size: 1.25rem !important; }
+    .it-agency-page .portfolio-grid { gap: 20px !important; }
+    .it-agency-page .stats-grid { gap: 20px !important; }
+    .it-agency-page .stat-card { padding: 25px 15px !important; }
+    .it-agency-page .stat-card h3 { font-size: 2.2rem !important; }
+    .it-agency-page .testi-card { padding: 25px !important; }
+    .it-agency-page .testi-text { font-size: 0.95rem !important; }
+    .it-agency-page .contact-box { padding: 30px 20px !important; }
+    .it-agency-page .form-grid { grid-template-columns: 1fr; gap: 15px !important; }
 }

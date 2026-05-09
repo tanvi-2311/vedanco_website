@@ -556,4 +556,21 @@
     .flow-diagram { flex-direction: column; }
     .flow-arrow { transform: rotate(90deg); margin: 10px 0; }
     .leader-info-overlay { position: static; margin-top: 20px; }
+
+    /* About Mobile Typography & Spacing Overrides */
+    .about-hero { height: 75vh !important; }
+    .about-hero-content h1 { font-size: 2.2rem !important; line-height: 1.15 !important; margin-bottom: 15px !important; }
+    .about-hero-content p { font-size: 1.05rem !important; margin-bottom: 25px !important; }
+    .section-header { margin-bottom: 40px !important; }
+    .section-header h2 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    .vision-mission { padding: 60px 0 !important; }
+    .vision-card, .mission-card { padding: 30px 20px !important; }
+    .vision-card h2, .mission-card h2 { font-size: 1.6rem !important; margin-bottom: 15px !important; }
+    .problems-section, .solution-section, .verticals-section, .flow-section, .roadmap-section, .advantage-section, .markets-section, .leadership-section { padding: 60px 0 !important; }
+    .solution-text h2 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    .solution-list li { font-size: 0.95rem !important; }
+    .advantage-text h2 { font-size: 2rem !important; line-height: 1.2 !important; margin-bottom: 20px !important; }
+    .leader-content h2 { font-size: 1.8rem !important; line-height: 1.2 !important; margin-bottom: 20px !important; }
+    .leader-content p { font-size: 0.95rem !important; line-height: 1.6 !important; }
+    .timeline-content h3 { font-size: 1.25rem !important; }
 }

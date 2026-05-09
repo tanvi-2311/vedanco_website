@@ -7,6 +7,66 @@ const Home = () => {
   const [isExpanded, setIsExpanded] = useState(true); // Default to expanded for now as in the user's view
   const [isProfileExpanded, setIsProfileExpanded] = useState(false);
 
+  const [homeFormData, setHomeFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+  const handleHomeFormChange = (e) => {
+    const { name, value } = e.target;
+    setHomeFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleHomeFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!homeFormData.subject || homeFormData.subject === 'Select Requirement') {
+      alert('Please select a requirement.');
+      return;
+    }
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    try {
+      const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5005' : '');
+      const response = await fetch(`${apiBase}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: homeFormData.name,
+          email: homeFormData.email,
+          phone: '', // Not present on the home footer form
+          subject: homeFormData.subject,
+          message: homeFormData.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setHomeFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const heroSlides = [
     { bg: '/assets/images/hero_office.png', title: 'Building Infrastructure for a New Era.', pill: '/assets/images/hero_office.png', label: 'Vedanco' },
     { 
@@ -614,21 +674,59 @@ const Home = () => {
               </div>
             </div>
             <div style={{ background: '#fff', padding: '40px', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', border: '1px solid #eee' }}>
-              <form style={{ display: 'grid', gap: '20px' }}>
+              <form onSubmit={handleHomeFormSubmit} style={{ display: 'grid', gap: '20px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                  <input type="text" placeholder="Your Name" style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
-                  <input type="email" placeholder="Your Email" style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={homeFormData.name}
+                    onChange={handleHomeFormChange}
+                    placeholder="Your Name" 
+                    style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} 
+                    required
+                  />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={homeFormData.email}
+                    onChange={handleHomeFormChange}
+                    placeholder="Your Email" 
+                    style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} 
+                    required
+                  />
                 </div>
-                <select style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}>
-                  <option>Select Requirement</option>
-                  <option>Logistics</option>
-                  <option>Import–Export</option>
-                  <option>Manpower</option>
-                  <option>Software Solutions</option>
-                  <option>Recycling</option>
+                <select 
+                  name="subject"
+                  value={homeFormData.subject}
+                  onChange={handleHomeFormChange}
+                  style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}
+                  required
+                >
+                  <option value="">Select Requirement</option>
+                  <option value="Logistics">Logistics</option>
+                  <option value="Import–Export">Import–Export</option>
+                  <option value="Manpower">Manpower</option>
+                  <option value="Software Solutions">Software Solutions</option>
+                  <option value="Recycling">Recycling</option>
                 </select>
-                <textarea placeholder="Your Message" rows="4" style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}></textarea>
-                <button type="submit" style={{ padding: '15px', background: 'var(--primary-green)', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: '700', cursor: 'pointer' }}>Send Message</button>
+                <textarea 
+                  name="message"
+                  value={homeFormData.message}
+                  onChange={handleHomeFormChange}
+                  placeholder="Your Message" 
+                  rows="4" 
+                  style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}
+                  required
+                ></textarea>
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  style={{ padding: '15px', background: 'var(--primary-green)', color: '#fff', border: 'none', borderRadius: '8px', fontWeight: '700', cursor: 'pointer', opacity: isSubmitting ? 0.7 : 1 }}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
+                {submitStatus === 'success' && <p style={{ color: 'green', fontWeight: 'bold', margin: '0' }}>Message sent successfully!</p>}
+                {submitStatus === 'error' && <p style={{ color: 'red', fontWeight: 'bold', margin: '0' }}>Failed to send message. Please try again.</p>}
               </form>
             </div>
           </div>

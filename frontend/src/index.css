@@ -27,6 +27,30 @@
     h2 { font-size: 1.5rem !important; margin-bottom: 15px !important; }
     h3 { font-size: 1.3rem !important; }
     p { font-size: 0.95rem !important; line-height: 1.6 !important; }
+
+    /* Home Hero Content */
+    .hero-content h1 { font-size: 2.2rem !important; line-height: 1.15 !important; }
+    .hero-category-tag { font-size: 0.8rem !important; letter-spacing: 2px !important; margin-bottom: 15px !important; }
+
+    /* Adani Verticals & Detail Pages Typography & Layout Fixes */
+    .adani-hero-content h1 { font-size: 2.2rem !important; line-height: 1.15 !important; padding-left: 15px !important; }
+    .adani-section-head { margin-bottom: 30px !important; padding-left: 15px !important; }
+    .adani-section-head h2 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    .adani-section-head p { font-size: 0.95rem !important; line-height: 1.5 !important; }
+    .adani-stats-grid { grid-template-columns: repeat(2, 1fr) !important; margin: 30px 0 !important; }
+    .adani-stat-item { padding: 30px 15px !important; }
+    .adani-stat-item .val { font-size: 2rem !important; }
+    .adani-stat-item .label { font-size: 0.75rem !important; letter-spacing: 1px !important; }
+    .adani-ops-split { flex-direction: column !important; margin: 50px 0 !important; min-height: auto !important; }
+    .adani-ops-img { height: 250px !important; min-height: 250px !important; width: 100% !important; }
+    .adani-ops-content { padding: 40px 20px !important; flex: 1 1 100% !important; }
+    .adani-ops-content h3 { font-size: 1.6rem !important; margin-bottom: 15px !important; padding-left: 15px !important; }
+    .adani-ops-content p { font-size: 0.95rem !important; margin-bottom: 25px !important; }
+    .adani-project-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+    .adani-card-body { padding: 25px !important; }
+    .adani-card h4 { font-size: 1.25rem !important; margin-bottom: 10px !important; }
+    .adani-cta-bar { padding: 50px 20px !important; }
+    .btn-adani { padding: 14px 30px !important; font-size: 0.95rem !important; width: 100% !important; text-align: center !important; }
     
     /* Header/Nav */
     nav { 
@@ -72,13 +96,20 @@
     }
 
     /* Mobile Accordion Logic */
+    .has-mega {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
     .mega-menu { 
         display: none !important; 
-        background: #0a2114 !important; /* Even Darker for sub-menu */
+        background: rgba(0, 0, 0, 0.2) !important; /* Semi-transparent overlay dark background */
         width: 100% !important;
         position: static !important;
         box-shadow: none !important;
-        padding: 10px 0 !important;
+        padding: 0 !important;
+        border: none !important;
     }
 
     .mobile-open .mega-menu { 
@@ -88,24 +119,57 @@
     .mega-grid, .mega-grid-v2 { 
         display: flex !important; 
         flex-direction: column !important;
-        padding: 0 20px 20px !important;
-        gap: 20px !important;
+        padding: 15px 20px !important;
+        gap: 15px !important;
+    }
+
+    .mega-col, .mega-col-v2 {
+        padding: 0 !important;
+        border-right: none !important;
+        border-left: none !important;
     }
 
     .mega-col h5, .mega-col-v2 h5 {
         color: var(--accent-gold) !important;
-        font-size: 0.9rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 1px !important;
-        margin-bottom: 10px !important;
-        opacity: 0.9 !important;
+        margin-top: 10px !important;
+        margin-bottom: 8px !important;
+        padding-bottom: 5px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .mega-col ul, .mega-col-v2 ul {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .mega-col ul li, .mega-col-v2 ul li {
+        margin-bottom: 0 !important;
+        width: 100% !important;
     }
 
     .mega-col ul li a, .mega-col-v2 ul li a {
-        font-size: 1rem !important;
-        padding: 8px 0 !important;
-        color: rgba(255,255,255,0.7) !important;
+        font-size: 0.95rem !important;
+        padding: 8px 10px !important;
+        color: rgba(255, 255, 255, 0.75) !important;
         border: none !important;
+        display: block !important;
+        transition: all 0.2s ease !important;
+        border-radius: 4px !important;
+    }
+
+    .mega-col ul li a:hover, .mega-col-v2 ul li a:hover {
+        color: var(--accent-gold) !important;
+        padding-left: 15px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
     }
 
     .mega-footer, .mega-footer-v2, .mega-feature-panel { display: none !important; }

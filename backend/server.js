@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { errorHandler } = require('./middleware/error');
-require('dotenv').config();
+
+// Load environment variables using absolute path
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 // Note: Supabase is initialized in its own config file and imported where needed.
 
@@ -22,8 +25,12 @@ app.get('/api/health', (req, res) => {
 // Error Handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5005;
+// Start server only when run directly (not as a serverless function)
+if (require.main === module) {
+  const PORT = process.env.PORT || 5005;
+  app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-});
+module.exports = app;

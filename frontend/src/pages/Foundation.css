@@ -421,3 +421,49 @@
     .focus-grid { grid-template-columns: repeat(2, 1fr); }
     .how-we-work { border-radius: 40px 40px 0 0; }
 }
+
+@media (max-width: 768px) {
+    /* Foundation Hero Mobile overrides */
+    .foundation-hero { padding: 100px 0 60px !important; }
+    .hero-flex { flex-direction: column !important; gap: 45px !important; text-align: center !important; }
+    .hero-text h1 { font-size: 2.2rem !important; line-height: 1.15 !important; letter-spacing: -0.5px !important; }
+    .hero-text p { font-size: 1rem !important; max-width: 100% !important; margin-bottom: 30px !important; }
+    .highlight-text { font-size: 0.8rem !important; padding: 6px 15px !important; margin-bottom: 20px !important; }
+    .hero-image-styled img { border-radius: 20px 10px 20px 10px !important; }
+    .impact-badge { position: static !important; margin-top: 20px !important; padding: 20px !important; border-radius: 16px !important; display: inline-block !important; }
+    .impact-badge h3 { font-size: 1.4rem !important; }
+
+    /* Focus Areas overrides */
+    .focus-areas { padding: 60px 0 !important; }
+    .section-header h2 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    .focus-grid { grid-template-columns: 1fr !important; gap: 20px !important; margin-top: 40px !important; }
+    .focus-card { padding: 30px 20px !important; border-radius: 20px !important; }
+    .focus-icon { width: 60px !important; height: 60px !important; border-radius: 15px !important; font-size: 1.5rem !important; margin-bottom: 20px !important; }
+    .focus-card h3 { font-size: 1.3rem !important; margin-bottom: 15px !important; }
+
+    /* How We Work overrides */
+    .how-we-work { padding: 60px 0 !important; }
+    .work-box { grid-template-columns: 1fr !important; gap: 30px !important; }
+    .work-content h2 { font-size: 1.8rem !important; line-height: 1.2 !important; margin-bottom: 30px !important; text-align: center !important; }
+    .work-step { padding: 20px !important; border-radius: 16px !important; gap: 15px !important; }
+    .step-num { font-size: 1.8rem !important; }
+    .work-step-content h4 { font-size: 1.15rem !important; }
+    .work-step-content p { font-size: 0.9rem !important; }
+
+    /* Impact Vision overrides */
+    .impact-vision { padding: 60px 0 !important; }
+    .vision-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; margin-top: 40px !important; }
+    .stat { padding: 30px 15px !important; border-radius: 20px !important; }
+    .stat-icon { font-size: 1.8rem !important; margin-bottom: 15px !important; }
+    .stat h5 { font-size: 1.15rem !important; }
+    .stat p { font-size: 0.85rem !important; }
+
+    /* Get Involved overrides */
+    .involve-section { padding: 60px 0 80px !important; margin-top: 0 !important; }
+    .involve-card { padding: 40px 20px !important; border-radius: 30px !important; flex-direction: column !important; text-align: center !important; gap: 30px !important; }
+    .involve-text h2 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    .involve-text p { font-size: 1rem !important; margin-bottom: 30px !important; }
+    .involve-cta { flex-direction: column !important; gap: 12px !important; }
+    .btn-solid-white, .btn-outline-white { padding: 14px 30px !important; width: 100% !important; text-align: center !important; }
+    .involve-visual { display: none !important; }
+}

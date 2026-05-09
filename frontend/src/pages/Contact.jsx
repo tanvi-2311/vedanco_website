@@ -10,6 +10,7 @@ const Contact = () => {
         subject: 'General Inquiry',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,8 +20,25 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        
+        try {
+            // Save to database via Express API
+            const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5005' : '');
+            await fetch(`${apiBase}/api/contact`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+        } catch (error) {
+            console.error('Error saving inquiry:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
         
         const message = `New Inquiry from Website:
 Name: ${formData.name}
@@ -118,7 +136,9 @@ Message: ${formData.message}`;
                                             onChange={handleChange}
                                         ></textarea>
                                     </div>
-                                    <button type="submit" className="btn-profile">Send Message</button>
+                                    <button type="submit" className="btn-profile" disabled={isSubmitting}>
+                                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                                    </button>
                                 </form>
                             </div>
 

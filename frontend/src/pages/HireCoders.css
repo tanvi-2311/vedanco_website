@@ -623,3 +623,78 @@
   from { opacity: 1; }
   to { opacity: 0; pointer-events: none; }
 }
+
+/* Mobile Optimization Override */
+@media (max-width: 768px) {
+  .hire-coders-layout {
+    padding: 20px 10px 40px !important;
+  }
+  .hc-topbar {
+    padding: 15px !important;
+    margin-bottom: 20px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 15px !important;
+  }
+  .hc-search-wrapper {
+    max-width: 100% !important;
+    min-width: 100% !important;
+  }
+  .hc-top-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  .hc-sort-select, .hc-action-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .hc-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  .hc-card {
+    padding: 15px !important;
+  }
+  .hc-card-header {
+    margin-bottom: 15px !important;
+  }
+  .hc-avatar-placeholder {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .hc-card-title h4 {
+    font-size: 1.05rem !important;
+  }
+  .hc-card-stats {
+    padding: 8px !important;
+    gap: 10px !important;
+  }
+  .hc-stat-val {
+    font-size: 0.8rem !important;
+  }
+  .hc-card-desc {
+    margin-bottom: 15px !important;
+  }
+  .hc-card-actions-wrapper {
+    padding-top: 15px !important;
+  }
+  .hc-modal {
+    margin: 10px !important;
+    max-height: calc(100vh - 40px) !important;
+    overflow-y: auto !important;
+  }
+  .hc-modal-header {
+    padding: 15px 20px !important;
+  }
+  .hc-modal-body {
+    padding: 20px !important;
+  }
+  .hc-form-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .hc-cancel-btn, .hc-submit-btn {
+    width: 100% !important;
+  }
+}
