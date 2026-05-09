@@ -26,7 +26,7 @@ const Contact = () => {
 
         try {
             let success = false;
-            
+
             // Save to database via Express API
             try {
                 const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? `http://${window.location.hostname}:5005` : '');
@@ -58,7 +58,7 @@ const Contact = () => {
                             message: formData.message
                         }
                     ]);
-                
+
                 if (error) {
                     throw new Error("Direct Supabase insert failed: " + error.message);
                 }
@@ -77,7 +77,7 @@ Subject: ${formData.subject}
 Message: ${formData.message}`;
 
         const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/919328088933?text=${encodedMessage}`;
+        const whatsappUrl = `https://wa.me/919510774987?text=${encodedMessage}`;
 
         window.open(whatsappUrl, '_blank');
     };
@@ -184,7 +184,7 @@ Message: ${formData.message}`;
                                         <i className="fas fa-phone-alt"></i>
                                         <div>
                                             <h4>Call Us</h4>
-                                            <p>+91 06353097642  </p>
+                                            <p>+91 9510774987 </p>
                                         </div>
                                     </div>
                                     <div className="detail-item">
