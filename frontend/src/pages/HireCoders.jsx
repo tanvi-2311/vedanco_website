@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './HireCoders.css'; // We will create this CSS file
+import { supabase } from '../supabaseClient';
 
 // Mock Data for Initial Render
 const mockDevelopers = [
@@ -121,6 +122,12 @@ const HireCoders = () => {
   const [hireDuration, setHireDuration] = useState('1 week');
   const [showSuccessToast, setShowSuccessToast] = useState(false);
 
+  // Client Info States
+  const [clientName, setClientName] = useState('');
+  const [clientEmail, setClientEmail] = useState('');
+  const [clientPhone, setClientPhone] = useState('');
+  const [projectDetails, setProjectDetails] = useState('');
+
   // Filter Logic
   useEffect(() => {
     let filtered = mockDevelopers.filter(dev => {
@@ -188,11 +195,42 @@ const HireCoders = () => {
     setHireDuration('1 week');
   };
 
-  const submitHireRequest = (e) => {
+  const submitHireRequest = async (e) => {
     e.preventDefault();
-    setSelectedDevForHire(null);
-    setShowSuccessToast(true);
-    setTimeout(() => setShowSuccessToast(false), 3000);
+    
+    try {
+      const { error } = await supabase
+        .from('hiring_inquiries')
+        .insert([
+          {
+            client_name: clientName,
+            client_email: clientEmail,
+            client_phone: clientPhone,
+            developer_name: selectedDevForHire.name,
+            developer_role: selectedDevForHire.role,
+            duration: hireDuration,
+            details: projectDetails
+          }
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      // Reset form fields
+      setClientName('');
+      setClientEmail('');
+      setClientPhone('');
+      setProjectDetails('');
+      setSelectedDevForHire(null);
+      
+      // Show success notification
+      setShowSuccessToast(true);
+      setTimeout(() => setShowSuccessToast(false), 3000);
+    } catch (err) {
+      console.error("Error submitting hiring inquiry:", err);
+      alert("Failed to submit inquiry: " + err.message);
+    }
   };
 
   return (
@@ -386,6 +424,35 @@ const HireCoders = () => {
               </div>
               <form onSubmit={submitHireRequest} className="hc-hire-form">
                 <div className="hc-form-group">
+                  <label>Your Name</label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter your full name" 
+                    value={clientName} 
+                    onChange={(e) => setClientName(e.target.value)} 
+                    required 
+                  />
+                </div>
+                <div className="hc-form-group">
+                  <label>Your Email</label>
+                  <input 
+                    type="email" 
+                    placeholder="Enter your email address" 
+                    value={clientEmail} 
+                    onChange={(e) => setClientEmail(e.target.value)} 
+                    required 
+                  />
+                </div>
+                <div className="hc-form-group">
+                  <label>Your Phone (Optional)</label>
+                  <input 
+                    type="tel" 
+                    placeholder="Enter your phone number" 
+                    value={clientPhone} 
+                    onChange={(e) => setClientPhone(e.target.value)} 
+                  />
+                </div>
+                <div className="hc-form-group">
                   <label>Select Hiring Duration</label>
                   <select value={hireDuration} onChange={(e) => setHireDuration(e.target.value)} required>
                     <option value="1 week">1 Week (Trial)</option>
@@ -397,7 +464,13 @@ const HireCoders = () => {
                 </div>
                 <div className="hc-form-group">
                   <label>Project Details / Inquiry</label>
-                  <textarea placeholder="Describe your project requirements briefly..." rows="4" required></textarea>
+                  <textarea 
+                    placeholder="Describe your project requirements briefly..." 
+                    rows="4" 
+                    value={projectDetails}
+                    onChange={(e) => setProjectDetails(e.target.value)}
+                    required
+                  ></textarea>
                 </div>
                 <div className="hc-form-actions">
                   <button type="button" className="hc-cancel-btn" onClick={() => setSelectedDevForHire(null)}>Cancel</button>
