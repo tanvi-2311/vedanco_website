@@ -23,7 +23,7 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        
+
         try {
             // Save to database via Express API
             const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5005' : '');
@@ -39,7 +39,7 @@ const Contact = () => {
         } finally {
             setIsSubmitting(false);
         }
-        
+
         const message = `New Inquiry from Website:
 Name: ${formData.name}
 Email: ${formData.email}
@@ -49,7 +49,7 @@ Message: ${formData.message}`;
 
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/919328088933?text=${encodedMessage}`;
-        
+
         window.open(whatsappUrl, '_blank');
     };
 
@@ -81,33 +81,33 @@ Message: ${formData.message}`;
                                 <form className="main-contact-form" onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label>Full Name</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             name="name"
-                                            placeholder="name" 
+                                            placeholder="name"
                                             value={formData.name}
                                             onChange={handleChange}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="form-row">
                                         <div className="form-group">
                                             <label>Email Address</label>
-                                            <input 
-                                                type="email" 
+                                            <input
+                                                type="email"
                                                 name="email"
-                                                placeholder="email id" 
+                                                placeholder="email id"
                                                 value={formData.email}
                                                 onChange={handleChange}
-                                                required 
+                                                required
                                             />
                                         </div>
                                         <div className="form-group">
                                             <label>Phone Number</label>
-                                            <input 
-                                                type="tel" 
+                                            <input
+                                                type="tel"
                                                 name="phone"
-                                                placeholder="number" 
+                                                placeholder="number"
                                                 value={formData.phone}
                                                 onChange={handleChange}
                                             />
@@ -115,7 +115,7 @@ Message: ${formData.message}`;
                                     </div>
                                     <div className="form-group">
                                         <label>Subject</label>
-                                        <select 
+                                        <select
                                             name="subject"
                                             value={formData.subject}
                                             onChange={handleChange}
@@ -128,9 +128,9 @@ Message: ${formData.message}`;
                                     </div>
                                     <div className="form-group">
                                         <label>Message</label>
-                                        <textarea 
+                                        <textarea
                                             name="message"
-                                            rows="5" 
+                                            rows="5"
                                             placeholder="How can we help you?"
                                             value={formData.message}
                                             onChange={handleChange}
@@ -155,7 +155,7 @@ Message: ${formData.message}`;
                                         <i className="fas fa-phone-alt"></i>
                                         <div>
                                             <h4>Call Us</h4>
-                                            <p>+91 9328088933  </p>
+                                            <p>+91 06353097642  </p>
                                         </div>
                                     </div>
                                     <div className="detail-item">
