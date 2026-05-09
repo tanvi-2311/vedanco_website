@@ -33,22 +33,53 @@ const Home = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     try {
-      const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? `http://${window.location.hostname}:5005` : '');
-      const response = await fetch(`${apiBase}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: homeFormData.name,
-          email: homeFormData.email,
-          phone: '', // Not present on the home footer form
-          subject: homeFormData.subject,
-          message: homeFormData.message
-        })
-      });
+      let success = false;
+      
+      // Try local Express API first
+      try {
+        const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? `http://${window.location.hostname}:5005` : '');
+        if (apiBase) {
+          const response = await fetch(`${apiBase}/api/contact`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name: homeFormData.name,
+              email: homeFormData.email,
+              phone: '',
+              subject: homeFormData.subject,
+              message: homeFormData.message
+            })
+          });
+          if (response.ok) success = true;
+        }
+      } catch (apiErr) {
+        console.warn("Express API failed, falling back to direct Supabase insert:", apiErr);
+      }
 
-      if (response.ok) {
+      // Fallback: Direct insert into Supabase from frontend
+      if (!success) {
+        const { supabase } = await import('../supabaseClient');
+        const { error } = await supabase
+          .from('contacts')
+          .insert([
+            {
+              name: homeFormData.name,
+              email: homeFormData.email,
+              phone: '',
+              subject: homeFormData.subject,
+              message: homeFormData.message
+            }
+          ]);
+        
+        if (error) {
+          throw new Error("Direct Supabase insert failed: " + error.message);
+        }
+        success = true;
+      }
+
+      if (success) {
         setSubmitStatus('success');
         setHomeFormData({
           name: '',

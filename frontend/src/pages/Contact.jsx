@@ -25,15 +25,44 @@ const Contact = () => {
         setIsSubmitting(true);
 
         try {
+            let success = false;
+            
             // Save to database via Express API
-            const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? `http://${window.location.hostname}:5005` : '');
-            await fetch(`${apiBase}/api/contact`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            try {
+                const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? `http://${window.location.hostname}:5005` : '');
+                if (apiBase) {
+                    const response = await fetch(`${apiBase}/api/contact`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    if (response.ok) success = true;
+                }
+            } catch (apiErr) {
+                console.warn("Express API failed, falling back to direct Supabase insert:", apiErr);
+            }
+
+            // Fallback: Direct insert into Supabase from frontend
+            if (!success) {
+                const { supabase } = await import('../supabaseClient');
+                const { error } = await supabase
+                    .from('contacts')
+                    .insert([
+                        {
+                            name: formData.name,
+                            email: formData.email,
+                            phone: formData.phone,
+                            subject: formData.subject,
+                            message: formData.message
+                        }
+                    ]);
+                
+                if (error) {
+                    throw new Error("Direct Supabase insert failed: " + error.message);
+                }
+            }
         } catch (error) {
             console.error('Error saving inquiry:', error);
         } finally {
