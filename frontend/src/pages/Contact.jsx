@@ -26,7 +26,7 @@ const Contact = () => {
 
         try {
             // Save to database via Express API
-            const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5005' : '');
+            const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? `http://${window.location.hostname}:5005` : '');
             await fetch(`${apiBase}/api/contact`, {
                 method: 'POST',
                 headers: {

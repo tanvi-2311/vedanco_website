@@ -33,7 +33,7 @@ const Home = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     try {
-      const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5005' : '');
+      const apiBase = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? `http://${window.location.hostname}:5005` : '');
       const response = await fetch(`${apiBase}/api/contact`, {
         method: 'POST',
         headers: {
