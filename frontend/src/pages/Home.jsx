@@ -525,29 +525,7 @@ const Home = () => {
 
 
 
-      {/* 3.1 VEDANCO IN NUMBERS (Adani Style Impact) */}
-      <section className="stats-section reveal" style={{ padding: '80px 0', background: '#0d2b1a', color: '#fff' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', textAlign: 'center' }}>
-            <div>
-              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>5+</h2>
-              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>High Growth Sectors</p>
-            </div>
-            <div>
-              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>10+</h2>
-              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Global Markets</p>
-            </div>
-            <div>
-              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>100%</h2>
-              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Integrated Control</p>
-            </div>
-            <div>
-              <h2 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-gold)' }}>2030</h2>
-              <p style={{ opacity: '0.8', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.9rem' }}>Vision Target</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* 4. HOW IT WORKS SECTION */}
       <section className="how-it-works reveal" id="how-it-works" style={{ background: '#fff', padding: '100px 0' }}>
@@ -599,28 +577,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 6. GROWTH PLAN SECTION */}
-      <section className="timeline-section reveal" id="growth" style={{ padding: '100px 0' }}>
-        <div className="container">
-          <h2 className="section-title text-center" style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '60px' }}>Strategic Growth Plan</h2>
-          <div className="timeline-track" style={{ marginTop: '0' }}>
-            {[
-              { phase: 'Year 1', biz: 'Trading & Recruitment', color: '#2e7d32' },
-              { phase: 'Year 2–3', biz: 'Logistics & Technology', color: '#388e3c' },
-              { phase: 'Year 3–5', biz: 'Recycling & Infrastructure', color: '#43a047' },
-              { phase: 'Year 5+', biz: 'Aviation & Energy', color: '#4caf50' }
-            ].map((step, idx) => (
-              <div key={idx} className="timeline-point">
-                <div className="point-circle" style={{ background: step.color }}></div>
-                <div className="point-content">
-                  <h5 style={{ color: step.color }}>{step.phase}</h5>
-                  <h4 style={{ fontSize: '1.2rem' }}>{step.biz}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* 6.1 OUR CORE VALUES */}
       <section className="values-section reveal" style={{ padding: '100px 0', background: '#fff' }}>
